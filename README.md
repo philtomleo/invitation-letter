@@ -7,6 +7,11 @@ npm install
 npm run dev
 ```
 
+## GitHub Pages
+
+- This project is configured for GitHub Pages at `/invitation-letter/`.
+- Pushing to `main` will trigger `.github/workflows/deploy-pages.yml`.
+
 ## Google Sheets integration
 
 1. Copy `.env.example` to `.env`.
