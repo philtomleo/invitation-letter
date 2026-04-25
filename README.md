@@ -30,6 +30,8 @@ npm run dev
    - 地址
    - 備註
 
+The current production build already includes a default Google Apps Script endpoint, so the hosted site can submit without a local `.env`.
+
 ## Notes
 
 - Photos are placeholders for now.
