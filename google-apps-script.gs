@@ -9,13 +9,13 @@ function doPost(e) {
     data.brideRelation || '',
     data.attendance || '',
     data.inviteType || '',
-    data.note || '',
     data.email || '',
     data.adultCount || '',
     data.childCount || '',
     data.childSeatCount || '',
     data.vegetarianCount || '',
     data.address || '',
+    data.note || ''
   ]);
 
   return ContentService.createTextOutput(
