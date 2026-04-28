@@ -20,15 +20,15 @@ npm run dev
    - Timestamp
    - 姓名
    - 手機
-   - Email
    - 是否出席
+   - 喜帖形式
+   - 備註
+   - Email
    - 成人數
    - 小孩數
    - 兒童座椅
    - 素食份數
-   - 喜帖形式
    - 地址
-   - 備註
 
 The current production build already includes a default Google Apps Script endpoint, so the hosted site can submit without a local `.env`.
 

@@ -1,4 +1,5 @@
 import { FormEvent, useMemo, useState } from 'react';
+import { weddingInfo } from '../data/wedding';
 import type { RSVPFormPayload } from '../lib/api';
 import { submitRsvp } from '../lib/api';
 
@@ -23,9 +24,11 @@ export function RSVPForm() {
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [showCalendarButton, setShowCalendarButton] = useState(false);
 
   const isAttending = form.attendance === '出席';
-  const needsPaperInvite = form.inviteType === '紙本喜帖';
+  const needsPaperInvite = form.inviteType === '紙本喜帖' || form.inviteType === '都要';
+  const needsEmailInvite = form.inviteType === '電子喜帖' || form.inviteType === '都要';
 
   const visibleErrors = useMemo(() => Object.values(errors).filter(Boolean), [errors]);
 
@@ -34,6 +37,7 @@ export function RSVPForm() {
     const nextErrors = validateForm(form);
     setErrors(nextErrors);
     setSubmitMessage('');
+    setShowCalendarButton(false);
 
     if (Object.keys(nextErrors).length > 0) {
       return;
@@ -44,6 +48,7 @@ export function RSVPForm() {
     try {
       const result = await submitRsvp(form);
       setSubmitMessage(result.message ?? '表單已送出，謝謝你的回覆。');
+      setShowCalendarButton(true);
       setForm(initialForm);
     } catch (error) {
       setSubmitMessage(error instanceof Error ? error.message : '送出失敗，請稍後再試。');
@@ -61,10 +66,17 @@ export function RSVPForm() {
         next.childCount = '';
         next.childSeatCount = '';
         next.vegetarianCount = '';
+        next.inviteType = '';
+        next.email = '';
+        next.address = '';
       }
 
-      if (field === 'inviteType' && value !== '紙本喜帖') {
+      if (field === 'inviteType' && value !== '紙本喜帖' && value !== '都要') {
         next.address = '';
+      }
+
+      if (field === 'inviteType' && value !== '電子喜帖' && value !== '都要') {
+        next.email = '';
       }
 
       return next;
@@ -98,27 +110,19 @@ export function RSVPForm() {
         >
           <div className="grid gap-4">
             <TextField
-              label="姓名"
+              label="您的大名"
               required
               value={form.name}
               onChange={(value) => updateField('name', value)}
               error={errors.name}
             />
             <TextField
-              label="手機"
+              label="您的手機"
               required
               inputMode="tel"
               value={form.phone}
               onChange={(value) => updateField('phone', value)}
               error={errors.phone}
-            />
-            <TextField
-              label="E-mail"
-              required
-              inputMode="email"
-              value={form.email}
-              onChange={(value) => updateField('email', value)}
-              error={errors.email}
             />
             <SelectField
               label="是否出席婚禮？"
@@ -131,8 +135,26 @@ export function RSVPForm() {
 
             {isAttending ? (
               <>
+                <RadioField
+                  label="喜帖形式"
+                  required
+                  value={form.inviteType}
+                  onChange={(value) => updateField('inviteType', value)}
+                  options={['紙本喜帖', '電子喜帖', '都要']}
+                  error={errors.inviteType}
+                />
+                {needsEmailInvite ? (
+                  <TextField
+                    label="E-mail"
+                    required
+                    inputMode="email"
+                    value={form.email}
+                    onChange={(value) => updateField('email', value)}
+                    error={errors.email}
+                  />
+                ) : null}
                 <TextField
-                  label="出席成人人數"
+                  label="出席「成人」人數"
                   required
                   inputMode="numeric"
                   value={form.adultCount}
@@ -140,7 +162,7 @@ export function RSVPForm() {
                   error={errors.adultCount}
                 />
                 <TextField
-                  label="出席小孩人數"
+                  label="出席「小孩」人數"
                   required
                   inputMode="numeric"
                   value={form.childCount}
@@ -165,15 +187,6 @@ export function RSVPForm() {
                 />
               </>
             ) : null}
-
-            <RadioField
-              label="需要紙本喜帖 或 電子喜帖"
-              required
-              value={form.inviteType}
-              onChange={(value) => updateField('inviteType', value)}
-              options={['紙本喜帖', '電子喜帖']}
-              error={errors.inviteType}
-            />
 
             {needsPaperInvite ? (
               <TextAreaField
@@ -207,9 +220,19 @@ export function RSVPForm() {
             ) : null}
 
             {submitMessage ? (
-              <p className="rounded-2xl bg-sage/45 px-4 py-3 text-sm leading-7 text-forest">
-                {submitMessage}
-              </p>
+              <div className="space-y-3 rounded-2xl bg-sage/45 px-4 py-4 text-sm leading-7 text-forest">
+                <p>{submitMessage}</p>
+                {showCalendarButton ? (
+                  <a
+                    className="inline-flex items-center justify-center rounded-full bg-white px-5 py-3 text-sm font-medium tracking-[0.15em] text-forest transition hover:bg-cream"
+                    href={buildCalendarUrl()}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    加入行事曆
+                  </a>
+                ) : null}
+              </div>
             ) : null}
           </div>
         </form>
@@ -222,25 +245,41 @@ function validateForm(form: RSVPFormPayload) {
   const errors: Errors = {};
   const phonePattern = /^09\d{8}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const needsEmailInvite = form.inviteType === '電子喜帖' || form.inviteType === '都要';
+  const needsPaperInvite = form.inviteType === '紙本喜帖' || form.inviteType === '都要';
 
   if (!form.name.trim()) errors.name = '必填';
   if (!phonePattern.test(form.phone.trim())) errors.phone = '手機格式錯誤';
-  if (!emailPattern.test(form.email.trim())) errors.email = 'Email 格式錯誤';
   if (!form.attendance) errors.attendance = '必填';
-  if (!form.inviteType) errors.inviteType = '必填';
 
   if (form.attendance === '出席') {
+    if (!form.inviteType) errors.inviteType = '必填';
+    if (needsEmailInvite && !emailPattern.test(form.email.trim())) errors.email = 'Email 格式錯誤';
     if (!form.adultCount.trim()) errors.adultCount = '必填';
     if (!form.childCount.trim()) errors.childCount = '必填';
     if (!form.childSeatCount.trim()) errors.childSeatCount = '必填';
     if (!form.vegetarianCount.trim()) errors.vegetarianCount = '必填';
   }
 
-  if (form.inviteType === '紙本喜帖' && !form.address.trim()) {
+  if (needsPaperInvite && !form.address.trim()) {
     errors.address = '請填寫收件地址';
   }
 
   return errors;
+}
+
+function buildCalendarUrl() {
+  const start = '20260919T040000Z';
+  const end = '20260919T070000Z';
+  const params = new URLSearchParams({
+    action: 'TEMPLATE',
+    text: `${weddingInfo.groom} & ${weddingInfo.bride} 婚宴`,
+    dates: `${start}/${end}`,
+    details: `誠摯邀請您參加 ${weddingInfo.groom} 與 ${weddingInfo.bride} 的婚宴。`,
+    location: `${weddingInfo.venue} ${weddingInfo.address}`,
+  });
+
+  return `https://calendar.google.com/calendar/render?${params.toString()}`;
 }
 
 function FieldShell({

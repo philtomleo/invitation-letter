@@ -6,15 +6,15 @@ function doPost(e) {
     new Date(),
     data.name || '',
     data.phone || '',
-    data.email || '',
     data.attendance || '',
+    data.inviteType || '',
+    data.note || '',
+    data.email || '',
     data.adultCount || '',
     data.childCount || '',
     data.childSeatCount || '',
     data.vegetarianCount || '',
-    data.inviteType || '',
     data.address || '',
-    data.note || '',
   ]);
 
   return ContentService.createTextOutput(
