@@ -3,9 +3,9 @@ export const weddingInfo = {
   groom: '許怡翔',
   bride: '陳培紹',
   eventDate: '2026-09-19T12:00:00+08:00',
-  dateLabel: '2026 / 09 / 19',
-  timeLabel: '午宴 12:00 開桌',
-  venue: '台北萬豪酒店 5 樓',
+  dateLabel: '2026 / 09 / 19 星期六',
+  timeLabel: '午宴 12:00 準時開桌',
+  venue: '台北萬豪酒店 5 樓 萬豪二廳',
   address: '台北市中山區樂群二路199號',
   mapUrl:
     'https://www.google.com/maps/search/?api=1&query=%E5%8F%B0%E5%8C%97%E8%90%AC%E8%B1%AA%E9%85%92%E5%BA%975%E6%A8%93',

@@ -6,6 +6,7 @@ import { submitRsvp } from '../lib/api';
 const initialForm: RSVPFormPayload = {
   name: '',
   phone: '',
+  brideRelation: '',
   email: '',
   attendance: '',
   adultCount: '',
@@ -117,12 +118,28 @@ export function RSVPForm() {
               error={errors.name}
             />
             <TextField
-              label="您的手機"
+              label="您的聯絡電話"
               required
               inputMode="tel"
               value={form.phone}
               onChange={(value) => updateField('phone', value)}
               error={errors.phone}
+            />
+            <SelectField
+              label="您和新娘的關係是？"
+              required
+              value={form.brideRelation}
+              onChange={(value) => updateField('brideRelation', value)}
+              options={[
+                '新娘親戚',
+                '新娘國小朋友',
+                '新娘國中朋友',
+                '新娘高中朋友',
+                '新娘大學朋友',
+                '新娘同事',
+                '新娘其他朋友',
+              ]}
+              error={errors.brideRelation}
             />
             <SelectField
               label="是否出席婚禮？"
@@ -243,13 +260,13 @@ export function RSVPForm() {
 
 function validateForm(form: RSVPFormPayload) {
   const errors: Errors = {};
-  const phonePattern = /^09\d{8}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const needsEmailInvite = form.inviteType === '電子喜帖' || form.inviteType === '都要';
   const needsPaperInvite = form.inviteType === '紙本喜帖' || form.inviteType === '都要';
 
   if (!form.name.trim()) errors.name = '必填';
-  if (!phonePattern.test(form.phone.trim())) errors.phone = '手機格式錯誤';
+  if (!form.phone.trim()) errors.phone = '必填';
+  if (!form.brideRelation) errors.brideRelation = '必填';
   if (!form.attendance) errors.attendance = '必填';
 
   if (form.attendance === '出席') {

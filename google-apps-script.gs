@@ -6,6 +6,7 @@ function doPost(e) {
     new Date(),
     data.name || '',
     data.phone || '',
+    data.brideRelation || '',
     data.attendance || '',
     data.inviteType || '',
     data.note || '',

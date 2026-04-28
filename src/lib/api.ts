@@ -1,6 +1,7 @@
 export type RSVPFormPayload = {
   name: string;
   phone: string;
+  brideRelation: string;
   email: string;
   attendance: string;
   adultCount: string;
