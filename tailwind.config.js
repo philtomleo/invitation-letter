@@ -4,24 +4,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#f8f4ee',
-        blush: '#f3e5de',
-        sage: '#dbe6dd',
-        forest: '#6f8d78',
-        ink: '#544b45',
-        sand: '#e6ddd3',
+        cream: '#f2e3d7',
+        blush: '#dcc0b7',
+        sage: '#d7a6a4',
+        forest: '#742637',
+        ink: '#4a322f',
+        sand: '#d2b3a5',
       },
       boxShadow: {
-        soft: '0 24px 70px rgba(111, 141, 120, 0.14)',
+        soft: '0 24px 70px rgba(116, 38, 55, 0.16)',
       },
       fontFamily: {
         sans: ['"Noto Sans TC"', '"PingFang TC"', 'sans-serif'],
         serif: ['"Cormorant Garamond"', '"Noto Serif TC"', 'serif'],
       },
-      backgroundImage: {
-        grain:
-          'radial-gradient(circle at top left, rgba(255,255,255,0.9), rgba(255,255,255,0) 45%), radial-gradient(circle at bottom right, rgba(219,230,221,0.65), rgba(219,230,221,0) 50%)',
-      },
+      backgroundImage: {},
     },
   },
   plugins: [],

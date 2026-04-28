@@ -26,23 +26,23 @@ export function Gallery() {
     <section className="px-6 py-16 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 text-center md:text-left">
-          <p className="text-sm tracking-[0.35em] text-forest">PHOTO STORY</p>
+          <p className="text-sm tracking-[0.35em] text-[#7a2234]">PHOTO STORY</p>
           <h2 className="mt-3 font-serif text-4xl text-ink md:text-5xl">之後可以直接替換成你們的照片</h2>
         </div>
 
         <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
-          <article className="overflow-hidden rounded-[2rem] border border-white/70 bg-white/80 shadow-soft">
+          <article className="overflow-hidden rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 shadow-soft">
             <div className="relative">
               <div
                 className={[
                   'aspect-[4/5] p-6 transition-all duration-500 md:aspect-[16/10]',
-                  activeIndex === 0 ? 'bg-[linear-gradient(160deg,#efe6dc,#f8f4ee)]' : '',
-                  activeIndex === 1 ? 'bg-[linear-gradient(160deg,#dce7df,#f6f2ec)]' : '',
-                  activeIndex === 2 ? 'bg-[linear-gradient(160deg,#efe9df,#e6ede7)]' : '',
+                  activeIndex === 0 ? 'bg-[linear-gradient(160deg,#e7d0c2,#f2e3d7)]' : '',
+                  activeIndex === 1 ? 'bg-[linear-gradient(160deg,#d8bdb4,#efe0d4)]' : '',
+                  activeIndex === 2 ? 'bg-[linear-gradient(160deg,#e0c8bd,#d4aaa3)]' : '',
                 ].join(' ')}
               >
                 <div className="flex h-full items-end rounded-[1.5rem] border border-white/60 p-5">
-                  <div className="rounded-full bg-white/80 px-4 py-2 text-xs tracking-[0.28em] text-forest">
+                  <div className="rounded-full bg-white/80 px-4 py-2 text-xs tracking-[0.28em] text-[#7a2234]">
                     PLACEHOLDER 0{activeIndex + 1}
                   </div>
                 </div>
@@ -61,7 +61,7 @@ export function Gallery() {
               </div>
             </div>
             <div className="space-y-3 p-6 md:p-8">
-              <p className="text-sm tracking-[0.28em] text-forest/70">
+              <p className="text-sm tracking-[0.28em] text-[#7a2234]/70">
                 {String(activeIndex + 1).padStart(2, '0')} / {String(galleryPlaceholders.length).padStart(2, '0')}
               </p>
               <h3 className="font-serif text-3xl text-ink md:text-4xl">{activeItem.title}</h3>
@@ -74,10 +74,10 @@ export function Gallery() {
               <button
                 key={item.title}
                 className={[
-                  'overflow-hidden rounded-[1.7rem] border bg-white/75 text-left shadow-soft transition duration-300',
+                  'overflow-hidden rounded-[1.7rem] border bg-[#fff8f3]/78 text-left shadow-soft transition duration-300',
                   activeIndex === index
-                    ? 'border-forest/40 ring-1 ring-forest/20'
-                    : 'border-white/70 hover:border-forest/20',
+                    ? 'border-[#7a2234]/40 ring-1 ring-[#7a2234]/20'
+                    : 'border-white/70 hover:border-[#7a2234]/20',
                 ].join(' ')}
                 type="button"
                 onClick={() => setActiveIndex(index)}
@@ -85,13 +85,13 @@ export function Gallery() {
                 <div
                   className={[
                     'aspect-[4/3] p-4',
-                    index === 0 ? 'bg-[linear-gradient(160deg,#efe6dc,#f8f4ee)]' : '',
-                    index === 1 ? 'bg-[linear-gradient(160deg,#dce7df,#f6f2ec)]' : '',
-                    index === 2 ? 'bg-[linear-gradient(160deg,#efe9df,#e6ede7)]' : '',
+                    index === 0 ? 'bg-[linear-gradient(160deg,#e7d0c2,#f2e3d7)]' : '',
+                    index === 1 ? 'bg-[linear-gradient(160deg,#d8bdb4,#efe0d4)]' : '',
+                    index === 2 ? 'bg-[linear-gradient(160deg,#e0c8bd,#d4aaa3)]' : '',
                   ].join(' ')}
                 >
                   <div className="flex h-full items-end rounded-[1.2rem] border border-white/60 p-4">
-                    <div className="rounded-full bg-white/80 px-3 py-1 text-[11px] tracking-[0.25em] text-forest">
+                    <div className="rounded-full bg-white/80 px-3 py-1 text-[11px] tracking-[0.25em] text-[#7a2234]">
                       0{index + 1}
                     </div>
                   </div>
@@ -121,7 +121,7 @@ function CarouselButton({
   return (
     <button
       aria-label={label}
-      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-forest/20 bg-white/88 text-xl text-forest shadow-soft backdrop-blur transition hover:border-forest/40 hover:bg-white"
+      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f3]/92 text-xl text-[#7a2234] shadow-soft backdrop-blur transition hover:border-[#7a2234]/35 hover:bg-white"
       type="button"
       onClick={onClick}
     >

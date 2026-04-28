@@ -5,7 +5,7 @@ export function WeddingInfo() {
     <section className="px-6 py-16 md:px-10">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.85fr_1.15fr]">
         <div className="space-y-4">
-          <p className="text-sm tracking-[0.35em] text-forest">CEREMONY DETAILS</p>
+          <p className="text-sm tracking-[0.35em] text-[#7a2234]">CEREMONY DETAILS</p>
           <h2 className="font-serif text-4xl text-ink md:text-5xl">把重要資訊放在最前面</h2>
           <p className="max-w-md leading-8 text-ink/70">
             我們把婚禮日期、地點與 RSVP 截止時間集中整理，讓親友在手機上也能快速閱讀與回覆。
@@ -20,10 +20,10 @@ export function WeddingInfo() {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 max-w-6xl rounded-[2rem] border border-white/70 bg-white/70 p-6 shadow-soft backdrop-blur md:p-8">
+      <div className="mx-auto mt-10 max-w-6xl rounded-[2rem] border border-white/70 bg-[#fff8f3]/72 p-6 shadow-soft backdrop-blur md:p-8">
         <div className="grid gap-4 md:grid-cols-3">
           {timelineNotes.map((note) => (
-            <div key={note} className="rounded-[1.5rem] border border-sand bg-cream/70 p-5">
+            <div key={note} className="rounded-[1.5rem] border border-sand bg-[#f8eee6] p-5">
               <p className="leading-7 text-ink/75">{note}</p>
             </div>
           ))}
@@ -43,8 +43,8 @@ function DetailCard({
   subContent: string;
 }) {
   return (
-    <div className="rounded-[1.7rem] border border-white/70 bg-white/80 p-6 shadow-soft backdrop-blur">
-      <p className="text-xs tracking-[0.3em] text-forest/70">{title}</p>
+    <div className="rounded-[1.7rem] border border-white/70 bg-[#fff8f3]/84 p-6 shadow-soft backdrop-blur">
+      <p className="text-xs tracking-[0.3em] text-[#7a2234]/70">{title}</p>
       <p className="mt-4 text-lg font-medium leading-8 text-ink">{content}</p>
       <p className="mt-2 text-sm leading-7 text-ink/70">{subContent}</p>
     </div>
