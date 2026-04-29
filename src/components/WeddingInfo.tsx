@@ -44,9 +44,9 @@ function DetailCard({
 }) {
   return (
     <div className="rounded-[1.7rem] border border-white/70 bg-[#fff8f3]/84 p-6 shadow-soft backdrop-blur">
-      <p className="text-xs tracking-[0.3em] text-[#7a2234]/70">{title}</p>
-      <p className="mt-4 text-lg font-medium leading-8 text-ink">{content}</p>
-      <p className="mt-2 text-sm leading-7 text-ink/70">{subContent}</p>
+      <p className="text-sm tracking-[0.26em] text-[#7a2234]/75">{title}</p>
+      <p className="mt-4 text-xl font-medium leading-8 text-ink">{content}</p>
+      <p className="mt-2 text-base leading-7 text-ink/70">{subContent}</p>
     </div>
   );
 }

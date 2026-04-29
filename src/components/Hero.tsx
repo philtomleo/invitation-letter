@@ -1,3 +1,4 @@
+import photo0135 from '../images/260302_0135.JPG';
 import photo0360 from '../images/260302_0360.JPG';
 import { weddingInfo } from '../data/wedding';
 
@@ -5,6 +6,11 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden px-6 pb-16 pt-8 md:px-10 md:pb-24 md:pt-12">
       <div className="mx-auto max-w-6xl">
+        <div className="mb-8 text-center md:mb-12">
+          <h1 className="whitespace-nowrap text-center font-adelio text-[2.6rem] leading-none text-[#7a2234] md:text-7xl">
+            We are getting married
+          </h1>
+        </div>
         <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6">
             <p className="inline-flex rounded-full border border-[#7a2234]/20 bg-[#fff8f2]/90 px-4 py-2 text-xs tracking-[0.35em] text-[#7a2234]">
@@ -24,6 +30,13 @@ export function Hero() {
                   <p className="text-xs tracking-[0.32em] text-ink/50">BRIDE</p>
                 </div>
               </div>
+            </div>
+            <div className="overflow-hidden rounded-[1.8rem] border border-white/70 shadow-soft">
+              <img
+                alt={`${weddingInfo.groom} 與 ${weddingInfo.bride} 的婚紗照`}
+                className="block h-auto w-full"
+                src={photo0135}
+              />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <InfoCard label="訂婚日期" value={weddingInfo.dateLabel} detail={weddingInfo.timeLabel} />
@@ -50,8 +63,8 @@ export function Hero() {
           <div className="relative">
             <div className="absolute -left-6 top-10 hidden h-48 w-48 rounded-full bg-[#dcb8b2]/80 blur-3xl md:block" />
             <div className="absolute -bottom-8 right-0 hidden h-52 w-52 rounded-full bg-[#b97a84]/35 blur-3xl md:block" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-[#fff8f3]/82 p-4 shadow-soft backdrop-blur">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] bg-[#ead4c9]">
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-[#fff8f3]/82 shadow-soft backdrop-blur">
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#ead4c9]">
                 <img
                   alt={`${weddingInfo.groom} 與 ${weddingInfo.bride} 的婚紗照`}
                   className="h-full w-full object-contain"
@@ -90,9 +103,9 @@ function InfoCard({
 }) {
   return (
     <div className="rounded-[1.5rem] border border-white/70 bg-white/80 p-5 shadow-soft backdrop-blur">
-      <p className="mb-3 text-xs tracking-[0.3em] text-[#7a2234]/70">{label}</p>
-      <p className="mb-2 text-lg font-medium text-ink">{value}</p>
-      <p className="text-sm leading-6 text-ink/70">{detail}</p>
+      <p className="mb-3 text-sm tracking-[0.26em] text-[#7a2234]/75">{label}</p>
+      <p className="mb-2 text-xl font-medium leading-8 text-ink">{value}</p>
+      <p className="text-base leading-7 text-ink/70">{detail}</p>
     </div>
   );
 }

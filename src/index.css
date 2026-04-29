@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;600&display=swap');
 
+@font-face {
+  font-family: 'Adelio Darmanto';
+  src: url('./fonts/Adelio_Darmanto.otf') format('opentype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Chen Yuluoyan';
+  src: url('./fonts/ChenYuluoyan-2.0-Thin.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,11 +23,18 @@
 :root {
   color: #4a322f;
   background: #f2e3d7;
-  font-family: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  font-family: 'Chen Yuluoyan', 'Noto Sans TC', 'PingFang TC', sans-serif;
 }
 
 html {
+  font-size: 17px;
   scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 body {
@@ -33,4 +56,12 @@ textarea {
 
 * {
   box-sizing: border-box;
+}
+
+.font-serif {
+  font-family: 'Chen Yuluoyan', 'Cormorant Garamond', 'Noto Serif TC', serif;
+}
+
+.font-adelio {
+  font-family: 'Adelio Darmanto', 'Cormorant Garamond', 'Noto Serif TC', serif;
 }
