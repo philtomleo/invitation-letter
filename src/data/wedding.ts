@@ -1,7 +1,7 @@
-import photo0135 from '../images/260302_0135.JPG';
-import photo0144 from '../images/260302_0144.JPG';
-import photo0196 from '../images/260302_0196.JPG';
-import photo0471 from '../images/260302_0471.JPG';
+import photo0135 from '../images/webp/260302_0135.webp';
+import photo0144 from '../images/webp/260302_0144.webp';
+import photo0196 from '../images/webp/260302_0196.webp';
+import photo0471 from '../images/webp/260302_0471.webp';
 
 export const weddingInfo = {
   title: '我們要結婚了',

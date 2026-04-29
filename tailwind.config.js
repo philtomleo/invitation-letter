@@ -11,8 +11,8 @@ export default {
         soft: '0 24px 70px rgba(116, 38, 55, 0.16)',
       },
       fontFamily: {
-        sans: ['"Chen Yuluoyan"', '"Noto Sans TC"', '"PingFang TC"', 'sans-serif'],
-        serif: ['"Chen Yuluoyan"', '"Cormorant Garamond"', '"Noto Serif TC"', 'serif'],
+        sans: ['"Chen Yuluoyan"', '"PingFang TC"', '"Microsoft JhengHei"', 'sans-serif'],
+        serif: ['"Chen Yuluoyan"', '"PingFang TC"', '"Microsoft JhengHei"', 'serif'],
       },
     },
   },

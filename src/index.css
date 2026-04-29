@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;600&display=swap');
-
 @font-face {
   font-family: 'Chen Yuluoyan';
-  src: url('./fonts/ChenYuluoyan-2.0-Thin.ttf') format('truetype');
+  src: url('./fonts/ChenYuluoyan-2.0-Thin.woff2') format('woff2');
   font-style: normal;
   font-weight: 300;
   font-display: swap;
@@ -15,7 +13,7 @@
 :root {
   color: #4a322f;
   background: #f2e3d7;
-  font-family: 'Chen Yuluoyan', 'Noto Sans TC', 'PingFang TC', sans-serif;
+  font-family: 'Chen Yuluoyan', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
 }
 
 html {
@@ -51,5 +49,5 @@ textarea {
 }
 
 .font-serif {
-  font-family: 'Chen Yuluoyan', 'Cormorant Garamond', 'Noto Serif TC', serif;
+  font-family: 'Chen Yuluoyan', 'PingFang TC', 'Microsoft JhengHei', serif;
 }

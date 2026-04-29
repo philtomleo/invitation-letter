@@ -1,5 +1,5 @@
-import photo0135 from '../images/260302_0135.JPG';
-import photo0360 from '../images/260302_0360.JPG';
+import photo0135 from '../images/webp/260302_0135.webp';
+import photo0360 from '../images/webp/260302_0360.webp';
 import { weddingInfo } from '../data/wedding';
 
 export function Hero() {
@@ -30,6 +30,8 @@ export function Hero() {
               <img
                 alt={`${weddingInfo.groom} 與 ${weddingInfo.bride} 的婚紗照`}
                 className="block h-auto w-full"
+                decoding="async"
+                fetchPriority="high"
                 src={photo0135}
               />
             </div>
@@ -63,6 +65,8 @@ export function Hero() {
                 <img
                   alt={`${weddingInfo.groom} 與 ${weddingInfo.bride} 的婚紗照`}
                   className="h-full w-full object-contain"
+                  decoding="async"
+                  loading="lazy"
                   src={photo0360}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.16),rgba(67,34,28,0.12))]" />

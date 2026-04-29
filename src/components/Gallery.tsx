@@ -37,6 +37,8 @@ export function Gallery() {
                   <img
                     alt={activeItem.title}
                     className="block h-auto w-full"
+                    decoding="async"
+                    loading="lazy"
                     src={activeItem.image}
                   />
                 </div>
@@ -67,7 +69,13 @@ export function Gallery() {
                 onClick={() => setActiveIndex(index)}
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  <img alt={item.title} className="h-full w-full object-cover object-center" src={item.image} />
+                  <img
+                    alt={item.title}
+                    className="h-full w-full object-cover object-center"
+                    decoding="async"
+                    loading="lazy"
+                    src={item.image}
+                  />
                 </div>
                 <div className="space-y-1 p-4">
                   <h3 className="font-serif text-2xl text-ink">{item.title}</h3>
