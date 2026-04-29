@@ -1,17 +1,17 @@
 import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
-import { galleryPlaceholders } from '../data/wedding';
+import { galleryPhotos } from '../data/wedding';
 
 export function Gallery() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeItem = galleryPlaceholders[activeIndex];
+  const activeItem = galleryPhotos[activeIndex];
 
   function goToPrevious() {
-    setActiveIndex((current) => (current === 0 ? galleryPlaceholders.length - 1 : current - 1));
+    setActiveIndex((current) => (current === 0 ? galleryPhotos.length - 1 : current - 1));
   }
 
   function goToNext() {
-    setActiveIndex((current) => (current === galleryPlaceholders.length - 1 ? 0 : current + 1));
+    setActiveIndex((current) => (current === galleryPhotos.length - 1 ? 0 : current + 1));
   }
 
   useEffect(() => {
@@ -27,23 +27,22 @@ export function Gallery() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 text-center md:text-left">
           <p className="text-sm tracking-[0.35em] text-[#7a2234]">PHOTO STORY</p>
-          <h2 className="mt-3 font-serif text-4xl text-ink md:text-5xl">之後可以直接替換成你們的照片</h2>
+          <h2 className="mt-3 font-serif text-4xl text-ink md:text-5xl">把我們喜歡的片刻放進來</h2>
         </div>
 
         <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
           <article className="overflow-hidden rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 shadow-soft">
             <div className="relative">
-              <div
-                className={[
-                  'aspect-[4/5] p-6 transition-all duration-500 md:aspect-[16/10]',
-                  activeIndex === 0 ? 'bg-[linear-gradient(160deg,#e7d0c2,#f2e3d7)]' : '',
-                  activeIndex === 1 ? 'bg-[linear-gradient(160deg,#d8bdb4,#efe0d4)]' : '',
-                  activeIndex === 2 ? 'bg-[linear-gradient(160deg,#e0c8bd,#d4aaa3)]' : '',
-                ].join(' ')}
-              >
-                <div className="flex h-full items-end rounded-[1.5rem] border border-white/60 p-5">
-                  <div className="rounded-full bg-white/80 px-4 py-2 text-xs tracking-[0.28em] text-[#7a2234]">
-                    PLACEHOLDER 0{activeIndex + 1}
+              <div className="aspect-[4/5] p-4 transition-all duration-500 md:aspect-[16/10] md:p-5">
+                <div className="relative h-full overflow-hidden rounded-[1.5rem] border border-white/60 bg-[#f4e3d7]">
+                  <img
+                    alt={activeItem.title}
+                    className="h-full w-full object-cover"
+                    src={activeItem.image}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#2f1e19]/55 via-[#2f1e19]/10 to-transparent" />
+                  <div className="absolute left-5 top-5 rounded-full bg-white/78 px-4 py-2 text-xs tracking-[0.28em] text-[#7a2234] backdrop-blur">
+                    PHOTO {String(activeIndex + 1).padStart(2, '0')}
                   </div>
                 </div>
               </div>
@@ -62,7 +61,7 @@ export function Gallery() {
             </div>
             <div className="space-y-3 p-6 md:p-8">
               <p className="text-sm tracking-[0.28em] text-[#7a2234]/70">
-                {String(activeIndex + 1).padStart(2, '0')} / {String(galleryPlaceholders.length).padStart(2, '0')}
+                {String(activeIndex + 1).padStart(2, '0')} / {String(galleryPhotos.length).padStart(2, '0')}
               </p>
               <h3 className="font-serif text-3xl text-ink md:text-4xl">{activeItem.title}</h3>
               <p className="max-w-xl leading-8 text-ink/70">{activeItem.description}</p>
@@ -70,7 +69,7 @@ export function Gallery() {
           </article>
 
           <div className="grid gap-4 sm:grid-cols-3 md:grid-cols-1">
-            {galleryPlaceholders.map((item, index) => (
+            {galleryPhotos.map((item, index) => (
               <button
                 key={item.title}
                 className={[
@@ -82,18 +81,11 @@ export function Gallery() {
                 type="button"
                 onClick={() => setActiveIndex(index)}
               >
-                <div
-                  className={[
-                    'aspect-[4/3] p-4',
-                    index === 0 ? 'bg-[linear-gradient(160deg,#e7d0c2,#f2e3d7)]' : '',
-                    index === 1 ? 'bg-[linear-gradient(160deg,#d8bdb4,#efe0d4)]' : '',
-                    index === 2 ? 'bg-[linear-gradient(160deg,#e0c8bd,#d4aaa3)]' : '',
-                  ].join(' ')}
-                >
-                  <div className="flex h-full items-end rounded-[1.2rem] border border-white/60 p-4">
-                    <div className="rounded-full bg-white/80 px-3 py-1 text-[11px] tracking-[0.25em] text-[#7a2234]">
-                      0{index + 1}
-                    </div>
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img alt={item.title} className="h-full w-full object-cover" src={item.image} />
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#2f1e19]/50 to-transparent" />
+                  <div className="absolute left-4 top-4 rounded-full bg-white/78 px-3 py-1 text-[11px] tracking-[0.25em] text-[#7a2234] backdrop-blur">
+                    {String(index + 1).padStart(2, '0')}
                   </div>
                 </div>
                 <div className="space-y-1 p-4">

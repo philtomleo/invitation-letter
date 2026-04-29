@@ -1,3 +1,4 @@
+import photo0360 from '../images/260302_0360.JPG';
 import { weddingInfo } from '../data/wedding';
 
 export function Hero() {
@@ -43,17 +44,29 @@ export function Hero() {
             <div className="absolute -left-6 top-10 hidden h-48 w-48 rounded-full bg-[#dcb8b2]/80 blur-3xl md:block" />
             <div className="absolute -bottom-8 right-0 hidden h-52 w-52 rounded-full bg-[#b97a84]/35 blur-3xl md:block" />
             <div className="relative overflow-hidden rounded-[2rem] border border-white/70 bg-[#fff8f3]/82 p-4 shadow-soft backdrop-blur">
-              <div className="aspect-[4/5] rounded-[1.6rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.42),rgba(255,255,255,0.14)),linear-gradient(135deg,#e7d0c2,#cfaaa0)] p-6">
-                <div className="flex h-full flex-col justify-between rounded-[1.35rem] border border-white/50 p-6 text-ink">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] bg-[#ead4c9]">
+                <img
+                  alt={`${weddingInfo.groom} 與 ${weddingInfo.bride} 的婚紗照`}
+                  className="h-full w-full object-contain"
+                  src={photo0360}
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.16),rgba(67,34,28,0.12))]" />
+                <div className="absolute inset-6 flex h-[calc(100%-3rem)] flex-col justify-between rounded-[1.35rem] border border-white/55 p-6 text-ink">
                   <div className="space-y-3">
                     <p className="text-sm tracking-[0.35em] text-[#7a2234]/80">SAVE THE DATE</p>
                     <p className="font-serif text-4xl leading-none md:text-5xl">09.19</p>
                     <p className="text-sm tracking-[0.25em] text-[#7a2234]/80">SATURDAY</p>
                   </div>
                   <div className="space-y-2 text-right">
-                    <p className="font-serif text-3xl">{weddingInfo.groom}</p>
-                    <p className="font-serif text-3xl">&</p>
-                    <p className="font-serif text-3xl">{weddingInfo.bride}</p>
+                    <p className="font-serif text-3xl text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.4)]">
+                      {weddingInfo.groom}
+                    </p>
+                    <p className="font-serif text-3xl text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.4)]">
+                      &
+                    </p>
+                    <p className="font-serif text-3xl text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.4)]">
+                      {weddingInfo.bride}
+                    </p>
                   </div>
                 </div>
               </div>

@@ -1,3 +1,8 @@
+import photo0135 from '../images/260302_0135.JPG';
+import photo0144 from '../images/260302_0144.JPG';
+import photo0196 from '../images/260302_0196.JPG';
+import photo0471 from '../images/260302_0471.JPG';
+
 export const weddingInfo = {
   title: '我們要結婚了',
   groom: '許怡翔',
@@ -18,17 +23,25 @@ export const timelineNotes = [
   '照片區目前為示意版位，之後可直接替換成你們的婚紗照。',
 ];
 
-export const galleryPlaceholders = [
+export const galleryPhotos = [
   {
-    title: 'Warm Morning',
-    description: '預留給主視覺婚紗照或雙人生活感照片。',
+    title: '輕輕靠近的片刻',
+    description: '有些幸福不需要太多台詞，只要站在彼此身邊就很剛好。',
+    image: photo0471,
   },
   {
-    title: 'Soft Blossom',
-    description: '適合放近景互動、捧花或手部特寫。',
+    title: '眼神裡的約定',
+    description: '謝謝你陪我們走到這裡，也一起期待下一段故事。',
+    image: photo0135,
   },
   {
-    title: 'Quiet Promise',
-    description: '可放戶外散步、背影或自然光人像。',
+    title: '安靜又明亮',
+    description: '把平凡日子裡最珍貴的樣子，慢慢地收進回憶裡。',
+    image: photo0196,
+  },
+  {
+    title: '此刻就是答案',
+    description: '願未來的每一天，都還能像現在一樣，溫柔而篤定。',
+    image: photo0144,
   },
 ];

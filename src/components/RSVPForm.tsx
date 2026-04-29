@@ -197,7 +197,7 @@ export function RSVPForm() {
                   required
                   value={form.childSeatCount}
                   onChange={(value) => updateField('childSeatCount', value)}
-                  options={['0', '1', '2', '3', '4']}
+                  options={['0', '1', '2', '3', '4', '5','6','7','8','9','10']}
                   error={errors.childSeatCount}
                 />
                 <SelectField
@@ -205,7 +205,7 @@ export function RSVPForm() {
                   required
                   value={form.vegetarianCount}
                   onChange={(value) => updateField('vegetarianCount', value)}
-                  options={['0', '1', '2', '3', '4']}
+                  options={['0', '1', '2', '3', '4', '5','6','7','8','9','10']}
                   error={errors.vegetarianCount}
                 />
               </>
@@ -222,7 +222,7 @@ export function RSVPForm() {
             ) : null}
 
             <TextAreaField
-              label="其他備註"
+              label="想對 怡翔&培紹 說的話"
               value={form.note}
               onChange={(value) => updateField('note', value)}
               error={errors.note}

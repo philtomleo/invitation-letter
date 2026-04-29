@@ -19,8 +19,8 @@ export function SuccessPage({ attendance }: { attendance: 'attending' | 'absent'
               : '很可惜您無法出席，但我們收到您的祝福了！'}
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            {isAttending ? (
+          {isAttending ? (
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
                 className="inline-flex items-center justify-center rounded-full bg-[#7a2234] px-6 py-3 text-sm font-medium tracking-[0.15em] text-white transition hover:bg-[#651a2a]"
                 href={buildCalendarUrl()}
@@ -29,16 +29,16 @@ export function SuccessPage({ attendance }: { attendance: 'attending' | 'absent'
               >
                 加入行事曆
               </a>
-            ) : null}
-            <a
-              className="inline-flex items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f2]/90 px-6 py-3 text-sm font-medium tracking-[0.15em] text-[#7a2234] transition hover:border-[#7a2234]/35 hover:bg-white"
-              href={weddingInfo.mapUrl}
-              rel="noreferrer"
-              target="_blank"
-            >
-              查看地圖
-            </a>
-          </div>
+              <a
+                className="inline-flex items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f2]/90 px-6 py-3 text-sm font-medium tracking-[0.15em] text-[#7a2234] transition hover:border-[#7a2234]/35 hover:bg-white"
+                href={weddingInfo.mapUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                查看地圖
+              </a>
+            </div>
+          ) : null}
         </section>
 
         {isAttending ? <Footer attendance={attendance} /> : null}
