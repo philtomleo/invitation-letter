@@ -4,10 +4,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#f2e3d7',
-        blush: '#dcc0b7',
-        sage: '#d7a6a4',
-        forest: '#742637',
         ink: '#4a322f',
         sand: '#d2b3a5',
       },
@@ -18,7 +14,6 @@ export default {
         sans: ['"Chen Yuluoyan"', '"Noto Sans TC"', '"PingFang TC"', 'sans-serif'],
         serif: ['"Chen Yuluoyan"', '"Cormorant Garamond"', '"Noto Serif TC"', 'serif'],
       },
-      backgroundImage: {},
     },
   },
   plugins: [],

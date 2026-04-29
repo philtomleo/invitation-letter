@@ -6,11 +6,6 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden px-4 pb-16 pt-8 md:px-10 md:pb-24 md:pt-12">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-8 text-center md:mb-12">
-          <h1 className="whitespace-nowrap text-center text-[2.6rem] leading-none text-[#7a2234] md:text-7xl">
-            We are getting married
-          </h1>
-        </div>
         <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6 text-center md:text-left">
             <p className="inline-flex rounded-full border border-[#7a2234]/20 bg-[#fff8f2]/90 px-4 py-2 text-xs tracking-[0.35em] text-[#7a2234]">
