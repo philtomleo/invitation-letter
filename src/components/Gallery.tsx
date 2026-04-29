@@ -37,7 +37,7 @@ export function Gallery() {
                 <div className="relative h-full overflow-hidden rounded-[1.5rem] border border-white/60 bg-[#f4e3d7]">
                   <img
                     alt={activeItem.title}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                     src={activeItem.image}
                   />
                   <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#2f1e19]/55 via-[#2f1e19]/10 to-transparent" />
@@ -81,8 +81,8 @@ export function Gallery() {
                 type="button"
                 onClick={() => setActiveIndex(index)}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img alt={item.title} className="h-full w-full object-cover" src={item.image} />
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#f4e3d7]">
+                  <img alt={item.title} className="h-full w-full object-contain" src={item.image} />
                   <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#2f1e19]/50 to-transparent" />
                   <div className="absolute left-4 top-4 rounded-full bg-white/78 px-3 py-1 text-[11px] tracking-[0.25em] text-[#7a2234] backdrop-blur">
                     {String(index + 1).padStart(2, '0')}
