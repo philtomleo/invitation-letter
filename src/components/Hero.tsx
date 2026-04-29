@@ -14,9 +14,16 @@ export function Hero() {
               <h1 className="font-serif text-5xl leading-tight text-ink md:text-7xl">
                 {weddingInfo.title}
               </h1>
-              <p className="text-lg tracking-[0.25em] text-[#7a2234] md:text-xl">
-                {weddingInfo.groom} &nbsp;·&nbsp; {weddingInfo.bride}
-              </p>
+              <div className="flex flex-wrap items-end gap-x-8 gap-y-3 text-[#7a2234]">
+                <div className="space-y-1">
+                  <p className="text-xl tracking-[0.18em] md:text-2xl">{weddingInfo.groom}</p>
+                  <p className="text-xs tracking-[0.32em] text-ink/50">GROOM</p>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-xl tracking-[0.18em] md:text-2xl">{weddingInfo.bride}</p>
+                  <p className="text-xs tracking-[0.32em] text-ink/50">BRIDE</p>
+                </div>
+              </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
               <InfoCard label="訂婚日期" value={weddingInfo.dateLabel} detail={weddingInfo.timeLabel} />
@@ -57,15 +64,9 @@ export function Hero() {
                     <p className="font-serif text-4xl leading-none md:text-5xl">09.19</p>
                     <p className="text-sm tracking-[0.25em] text-[#7a2234]/80">SATURDAY</p>
                   </div>
-                  <div className="space-y-2 text-right">
-                    <p className="font-serif text-3xl text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.4)]">
-                      {weddingInfo.groom}
-                    </p>
-                    <p className="font-serif text-3xl text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.4)]">
-                      &
-                    </p>
-                    <p className="font-serif text-3xl text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.4)]">
-                      {weddingInfo.bride}
+                  <div className="-mr-1 mb-1 self-end text-right md:-mr-2 md:mb-3">
+                    <p className="font-serif text-3xl tracking-[0.08em] text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.45)] md:text-[2.6rem]">
+                      怡翔&培紹
                     </p>
                   </div>
                 </div>
