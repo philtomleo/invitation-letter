@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { galleryPhotos } from '../data/wedding';
 
@@ -40,23 +39,10 @@ export function Gallery() {
                     className="block h-auto w-full"
                     src={activeItem.image}
                   />
-                  <div className="absolute left-5 top-5 rounded-full bg-white/78 px-4 py-2 text-xs tracking-[0.28em] text-[#7a2234] backdrop-blur">
-                    PHOTO {String(activeIndex + 1).padStart(2, '0')}
-                  </div>
                 </div>
               </div>
-              <div className="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-3 md:px-4">
-                <div className="pointer-events-auto">
-                  <CarouselButton label="上一張" onClick={goToPrevious}>
-                    ←
-                  </CarouselButton>
-                </div>
-                <div className="pointer-events-auto">
-                  <CarouselButton label="下一張" onClick={goToNext}>
-                    →
-                  </CarouselButton>
-                </div>
-              </div>
+              <CarouselButton className="left-3 top-[calc(100%-1rem)] -translate-y-1/2 md:left-4 md:top-[calc(100%-1.5rem)]" direction="left" label="上一張" onClick={goToPrevious} />
+              <CarouselButton className="right-3 top-[calc(100%-1rem)] -translate-y-1/2 md:right-4 md:top-[calc(100%-1.5rem)]" direction="right" label="下一張" onClick={goToNext} />
             </div>
             <div className="space-y-3 p-6 md:p-8">
               <p className="text-sm tracking-[0.28em] text-[#7a2234]/70">
@@ -82,9 +68,6 @@ export function Gallery() {
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img alt={item.title} className="h-full w-full object-cover object-center" src={item.image} />
-                  <div className="absolute left-4 top-4 rounded-full bg-white/78 px-3 py-1 text-[11px] tracking-[0.25em] text-[#7a2234] backdrop-blur">
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
                 </div>
                 <div className="space-y-1 p-4">
                   <h3 className="font-serif text-2xl text-ink">{item.title}</h3>
@@ -100,22 +83,38 @@ export function Gallery() {
 }
 
 function CarouselButton({
-  children,
+  className,
+  direction,
   label,
   onClick,
 }: {
-  children: ReactNode;
+  className: string;
+  direction: 'left' | 'right';
   label: string;
   onClick: () => void;
 }) {
   return (
     <button
       aria-label={label}
-      className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f3]/92 text-xl text-[#7a2234] shadow-soft backdrop-blur transition hover:border-[#7a2234]/35 hover:bg-white"
+      className={`absolute z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f3]/92 text-[#7a2234] shadow-soft backdrop-blur transition hover:border-[#7a2234]/35 hover:bg-white md:h-12 md:w-12 ${className}`}
       type="button"
       onClick={onClick}
     >
-      {children}
+      <svg
+        aria-hidden="true"
+        className="h-3.5 w-3.5 md:h-5 md:w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d={direction === 'left' ? 'M14.5 6 8.5 12l6 6' : 'M9.5 6 15.5 12l-6 6'}
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2.2"
+        />
+      </svg>
     </button>
   );
 }

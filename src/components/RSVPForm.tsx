@@ -91,16 +91,16 @@ export function RSVPForm() {
 
   return (
     <section id="rsvp" className="px-6 py-16 md:px-10">
-      <div className="mx-auto grid max-w-6xl gap-8 rounded-[2.4rem] border border-white/60 bg-[#ecd7cc]/55 p-6 shadow-soft backdrop-blur md:grid-cols-[0.78fr_1.22fr] md:p-8">
-        <div className="space-y-4">
+      <div className="mx-auto grid max-w-6xl gap-8 md:rounded-[2.4rem] md:border md:border-white/60 md:bg-[#ecd7cc]/55 md:p-8 md:shadow-soft md:backdrop-blur md:grid-cols-[0.78fr_1.22fr]">
+        <div className="space-y-4 text-center md:text-left">
           <p className="text-sm tracking-[0.35em] text-[#7a2234]">RSVP</p>
           <h2 className="font-serif text-4xl text-ink md:text-5xl">敬請留下回覆</h2>
-          <p className="max-w-md leading-8 text-ink/70">
+          <p className="mx-auto max-w-md leading-8 text-ink/70 md:mx-0">
             表單內容依照你提供的欄位規格整理，視覺則改成更柔和、乾淨的韓系風格。之後接上
             Google Sheets 後，就能直接彙整賓客名單。
           </p>
 
-          <div className="rounded-[1.7rem] border border-white/65 bg-[#f7ebe3]/82 p-5 shadow-soft">
+          <div className="p-1 md:rounded-[1.7rem] md:border md:border-white/65 md:bg-[#f7ebe3]/82 md:p-5 md:shadow-soft">
             <p className="text-sm leading-7 text-ink/75">填寫提醒</p>
             <ul className="mt-3 space-y-2 text-sm leading-7 text-ink/65">
               <li>請於截止日前完成回覆。</li>
@@ -111,7 +111,7 @@ export function RSVPForm() {
         </div>
 
         <form
-          className="rounded-[2rem] border border-white/80 bg-[#fffdf9]/94 p-6 shadow-soft backdrop-blur md:p-8"
+          className="md:rounded-[2rem] md:border md:border-white/80 md:bg-[#fffdf9]/94 md:p-8 md:shadow-soft md:backdrop-blur"
           onSubmit={handleSubmit}
         >
           <div className="grid gap-4">
@@ -131,7 +131,7 @@ export function RSVPForm() {
               error={errors.phone}
             />
             <SelectField
-              label="您和培紹的關係是？"
+              label="您和培紹的關係？"
               required
               value={form.brideRelation}
               onChange={(value) => updateField('brideRelation', value)}
@@ -177,7 +177,7 @@ export function RSVPForm() {
                   />
                 ) : null}
                 <TextField
-                  label="出席「成人」人數"
+                  label="出席「成人」人數?"
                   required
                   inputMode="numeric"
                   value={form.adultCount}
@@ -185,7 +185,7 @@ export function RSVPForm() {
                   error={errors.adultCount}
                 />
                 <TextField
-                  label="出席「小孩」人數"
+                  label="出席「小孩」人數?"
                   required
                   inputMode="numeric"
                   value={form.childCount}
@@ -193,7 +193,7 @@ export function RSVPForm() {
                   error={errors.childCount}
                 />
                 <SelectField
-                  label="需要幾張兒童座椅"
+                  label="需要幾張兒童座椅?"
                   required
                   value={form.childSeatCount}
                   onChange={(value) => updateField('childSeatCount', value)}
@@ -201,7 +201,7 @@ export function RSVPForm() {
                   error={errors.childSeatCount}
                 />
                 <SelectField
-                  label="需要幾份素食？"
+                  label="需要幾份素食?"
                   required
                   value={form.vegetarianCount}
                   onChange={(value) => updateField('vegetarianCount', value)}

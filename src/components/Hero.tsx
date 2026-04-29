@@ -4,15 +4,15 @@ import { weddingInfo } from '../data/wedding';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden px-6 pb-16 pt-8 md:px-10 md:pb-24 md:pt-12">
+    <section className="relative overflow-hidden px-4 pb-16 pt-8 md:px-10 md:pb-24 md:pt-12">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 text-center md:mb-12">
-          <h1 className="whitespace-nowrap text-center font-adelio text-[2.6rem] leading-none text-[#7a2234] md:text-7xl">
+          <h1 className="whitespace-nowrap text-center text-[2.6rem] leading-none text-[#7a2234] md:text-7xl">
             We are getting married
           </h1>
         </div>
         <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
-          <div className="space-y-6">
+          <div className="space-y-6 text-center md:text-left">
             <p className="inline-flex rounded-full border border-[#7a2234]/20 bg-[#fff8f2]/90 px-4 py-2 text-xs tracking-[0.35em] text-[#7a2234]">
               WEDDING INVITATION
             </p>
@@ -20,7 +20,7 @@ export function Hero() {
               <h1 className="font-serif text-5xl leading-tight text-ink md:text-7xl">
                 {weddingInfo.title}
               </h1>
-              <div className="flex flex-wrap items-end gap-x-8 gap-y-3 text-[#7a2234]">
+              <div className="flex flex-wrap items-end justify-center gap-x-8 gap-y-3 text-[#7a2234] md:justify-start">
                 <div className="space-y-1">
                   <p className="text-xl tracking-[0.18em] md:text-2xl">{weddingInfo.groom}</p>
                   <p className="text-xs tracking-[0.32em] text-ink/50">GROOM</p>
@@ -42,7 +42,7 @@ export function Hero() {
               <InfoCard label="訂婚日期" value={weddingInfo.dateLabel} detail={weddingInfo.timeLabel} />
               <InfoCard label="宴客地點" value={weddingInfo.venue} detail={weddingInfo.address} />
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:items-start md:justify-start">
               <a
                 className="inline-flex items-center justify-center rounded-full bg-[#7a2234] px-6 py-3 text-sm font-medium tracking-[0.2em] text-white transition hover:bg-[#651a2a]"
                 href="#rsvp"
