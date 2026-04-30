@@ -1,14 +1,10 @@
-import { Footer } from './Footer';
 import { weddingInfo } from '../data/wedding';
 
 export function SuccessPage({ attendance }: { attendance: 'attending' | 'absent' }) {
   const isAttending = attendance === 'attending';
-  const wrapperClassName = isAttending
-    ? 'min-h-screen bg-[linear-gradient(180deg,#f7efe8_0%,#f3e4da_45%,#eed9cf_100%)] px-6 py-12 text-ink md:px-10'
-    : 'min-h-screen bg-[linear-gradient(180deg,#f7efe8_0%,#f3e4da_45%,#eed9cf_100%)] px-6 py-12 text-ink md:px-10 flex items-center';
 
   return (
-    <div className={wrapperClassName}>
+    <div className="flex min-h-screen items-center bg-[linear-gradient(180deg,#f7efe8_0%,#f3e4da_45%,#eed9cf_100%)] px-6 py-12 text-ink md:px-10">
       <div className="mx-auto max-w-4xl">
         <section className="rounded-[2.2rem] border border-white/70 bg-white/80 px-6 py-10 text-center shadow-soft backdrop-blur md:px-10 md:py-14">
           <p className="text-sm tracking-[0.35em] text-[#7a2234]">RSVP RECEIVED</p>
@@ -40,8 +36,6 @@ export function SuccessPage({ attendance }: { attendance: 'attending' | 'absent'
             </div>
           ) : null}
         </section>
-
-        {isAttending ? <Footer attendance={attendance} /> : null}
       </div>
     </div>
   );

@@ -64,6 +64,13 @@ export function RSVPForm() {
   }
 
   function updateField(field: keyof RSVPFormPayload, value: string) {
+    const shouldStabilizeScroll = field === 'attendance' || field === 'inviteType';
+    const activeElement =
+      shouldStabilizeScroll && document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const anchorTop = activeElement?.getBoundingClientRect().top ?? null;
+
     setForm((current) => {
       const next = { ...current, [field]: value };
 
@@ -87,6 +94,13 @@ export function RSVPForm() {
 
       return next;
     });
+
+    if (activeElement && anchorTop !== null) {
+      window.requestAnimationFrame(() => {
+        const nextTop = activeElement.getBoundingClientRect().top;
+        window.scrollBy({ top: nextTop - anchorTop, behavior: 'auto' });
+      });
+    }
   }
 
   return (
