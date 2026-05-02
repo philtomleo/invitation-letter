@@ -5,7 +5,7 @@ export function WeddingInfo() {
     <section className="px-6 py-16 md:px-10">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.85fr_1.15fr]">
         <div className="space-y-4">
-          <p className="text-sm tracking-[0.35em] text-[#7a2234]">CEREMONY DETAILS</p>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">CEREMONY DETAILS</p>
           <h2 className="font-serif text-4xl text-ink md:text-5xl">把重要資訊放在最前面</h2>
           <p className="max-w-md leading-8 text-ink/70">
             我們把婚禮日期、地點與 RSVP 截止時間集中整理，讓親友在手機上也能快速閱讀與回覆。
@@ -44,9 +44,9 @@ function DetailCard({
 }) {
   return (
     <div className="rounded-[1.7rem] border border-white/70 bg-[#fff8f3]/84 p-6 shadow-soft backdrop-blur">
-      <p className="text-sm tracking-[0.26em] text-[#7a2234]/75">{title}</p>
+      <p className="text-lg tracking-[0.26em] text-[#7a2234]/75">{title}</p>
       <p className="mt-4 text-xl font-medium leading-8 text-ink">{content}</p>
-      <p className="mt-2 text-base leading-7 text-ink/70">{subContent}</p>
+      <p className="text-xl leading-7 text-ink/70">{subContent}</p>
     </div>
   );
 }

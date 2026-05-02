@@ -17,11 +17,11 @@ export function Hero() {
               </h1>
               <div className="flex flex-wrap items-end justify-center gap-x-8 gap-y-3 text-[#7a2234] md:justify-start">
                 <div className="space-y-1">
-                  <p className="text-xl tracking-[0.18em] md:text-2xl">{weddingInfo.groom}</p>
+                  <p className="text-2xl tracking-[0.18em] md:text-3xl">{weddingInfo.groom}</p>
                   <p className="text-xs tracking-[0.32em] text-ink/50">GROOM</p>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-xl tracking-[0.18em] md:text-2xl">{weddingInfo.bride}</p>
+                  <p className="text-2xl tracking-[0.18em] md:text-3xl">{weddingInfo.bride}</p>
                   <p className="text-xs tracking-[0.32em] text-ink/50">BRIDE</p>
                 </div>
               </div>
@@ -41,13 +41,13 @@ export function Hero() {
             </div>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:items-start md:justify-start">
               <a
-                className="inline-flex items-center justify-center rounded-full bg-[#7a2234] px-6 py-3 text-sm font-medium tracking-[0.2em] text-white transition hover:bg-[#651a2a]"
+                className="inline-flex items-center justify-center rounded-full bg-[#7a2234] px-6 py-3 text-lg font-medium tracking-[0.2em] text-white transition hover:bg-[#651a2a]"
                 href="#rsvp"
               >
                 立即回覆出席
               </a>
               <a
-                className="inline-flex items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f2]/90 px-6 py-3 text-sm font-medium tracking-[0.15em] text-[#7a2234] transition hover:border-[#7a2234]/35 hover:bg-white"
+                className="inline-flex items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f2]/90 px-6 py-3 text-lg font-medium tracking-[0.15em] text-[#7a2234] transition hover:border-[#7a2234]/35 hover:bg-white"
                 href={weddingInfo.mapUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -72,9 +72,9 @@ export function Hero() {
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.16),rgba(67,34,28,0.12))]" />
                 <div className="absolute inset-6 flex h-[calc(100%-3rem)] flex-col justify-between rounded-[1.35rem] border border-white/55 p-6 text-ink">
                   <div className="space-y-3">
-                    <p className="text-sm tracking-[0.35em] text-[#7a2234]/80">SAVE THE DATE</p>
+                    <p className="text-lg tracking-[0.35em] text-[#7a2234]/80">SAVE THE DATE</p>
                     <p className="font-serif text-4xl leading-none md:text-5xl">09.19</p>
-                    <p className="text-sm tracking-[0.25em] text-[#7a2234]/80">SATURDAY</p>
+                    <p className="text-lg tracking-[0.25em] text-[#7a2234]/80">SATURDAY</p>
                   </div>
                   <div className="-mr-1 mb-1 self-end text-right md:-mr-2 md:mb-3">
                     <p className="font-serif text-3xl tracking-[0.08em] text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.45)] md:text-[2.6rem]">
@@ -102,9 +102,9 @@ function InfoCard({
 }) {
   return (
     <div className="rounded-[1.5rem] border border-white/70 bg-white/80 p-5 shadow-soft backdrop-blur">
-      <p className="mb-3 text-sm tracking-[0.26em] text-[#7a2234]/75">{label}</p>
-      <p className="mb-2 text-xl font-medium leading-8 text-ink">{value}</p>
-      <p className="text-base leading-7 text-ink/70">{detail}</p>
+      <p className="mb-3 text-lg tracking-[0.26em] text-[#7a2234]/75">{label}</p>
+      <p className="text-xl font-medium leading-8 text-ink">{value}</p>
+      <p className="text-xl leading-7 text-ink/70">{detail}</p>
     </div>
   );
 }

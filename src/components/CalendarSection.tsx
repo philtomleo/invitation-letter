@@ -21,10 +21,10 @@ export function CalendarSection() {
         <div className="rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 p-6 shadow-soft backdrop-blur md:p-8">
           <div className="mb-6 flex items-end justify-between">
             <div>
-              <p className="text-sm tracking-[0.35em] text-[#7a2234]">SEPTEMBER 2026</p>
+              <p className="text-lg tracking-[0.35em] text-[#7a2234]">SEPTEMBER 2026</p>
               <h2 className="mt-3 font-serif text-4xl text-ink">把 9/19 留給我們</h2>
             </div>
-            <div className="rounded-full bg-[#ead1ca] px-4 py-2 text-sm tracking-[0.25em] text-[#7a2234]">
+            <div className="rounded-full bg-[#ead1ca] px-4 py-2 text-lg tracking-[0.25em] text-[#7a2234]">
               SAT
             </div>
           </div>
@@ -39,7 +39,7 @@ export function CalendarSection() {
               <div
                 key={`${cell.day ?? 'blank'}-${index}`}
                 className={[
-                  'flex aspect-square items-center justify-center rounded-2xl text-sm',
+                  'flex aspect-square items-center justify-center rounded-2xl text-lg',
                   cell.day ? 'bg-[#f7ece4] text-ink' : 'bg-transparent',
                   cell.isEventDay ? 'relative bg-transparent shadow-none' : '',
                 ].join(' ')}
@@ -64,7 +64,7 @@ export function CalendarSection() {
                         fill="rgba(210, 24, 36, 0.18)"
                       />
                     </svg>
-                    <span className="relative z-10 text-sm font-normal text-ink">{cell.day}</span>
+                    <span className="relative z-10 text-lg font-normal text-ink">{cell.day}</span>
                   </div>
                 ) : (
                   cell.day
@@ -75,7 +75,7 @@ export function CalendarSection() {
         </div>
 
         <div className="rounded-[2rem] border border-white/70 bg-[linear-gradient(135deg,rgba(255,249,244,0.92),rgba(226,193,184,0.82))] p-6 shadow-soft backdrop-blur md:p-8">
-          <p className="text-sm tracking-[0.35em] text-[#7a2234]">COUNTDOWN</p>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">COUNTDOWN</p>
           <h2 className="mt-3 font-serif text-4xl text-ink">幸福倒數中</h2>
           <p className="mt-4 max-w-lg leading-8 text-ink/70">
             距離 2026 年 9 月 19 日午宴 12:00 開桌，還有一點點時間把這天好好記在心裡。
@@ -88,7 +88,7 @@ export function CalendarSection() {
             <CountdownCard label="Seconds" value={countdown.seconds} />
           </div>
 
-          <p className="mt-8 text-sm leading-7 text-ink/60">
+          <p className="mt-8 text-lg leading-7 text-ink/60">
             如果目前時間已超過宴客時間，倒數會自動停在 0，之後也可以改成婚禮回顧版本。
           </p>
         </div>

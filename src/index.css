@@ -14,22 +14,24 @@
   color: #4a322f;
   background: #f2e3d7;
   font-family: 'Chen Yuluoyan', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+  font-weight: 500;
 }
 
 html {
-  font-size: 17px;
+  font-size: 18px;
   scroll-behavior: smooth;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 18px;
+    font-size: 19px;
   }
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  font-synthesis: weight;
 }
 
 a {
@@ -50,4 +52,5 @@ textarea {
 
 .font-serif {
   font-family: 'Chen Yuluoyan', 'PingFang TC', 'Microsoft JhengHei', serif;
+  font-weight: 500;
 }

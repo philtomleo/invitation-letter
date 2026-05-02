@@ -107,7 +107,7 @@ export function RSVPForm() {
     <section id="rsvp" className="px-6 py-16 md:px-10">
       <div className="mx-auto grid max-w-6xl gap-8 md:rounded-[2.4rem] md:border md:border-white/60 md:bg-[#ecd7cc]/55 md:p-8 md:shadow-soft md:backdrop-blur md:grid-cols-[0.78fr_1.22fr]">
         <div className="space-y-4 text-center md:text-left">
-          <p className="text-sm tracking-[0.35em] text-[#7a2234]">RSVP</p>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">RSVP</p>
           <h2 className="font-serif text-4xl text-ink md:text-5xl">敬請留下回覆</h2>
           <p className="mx-auto max-w-md leading-8 text-ink/70 md:mx-0">
             表單內容依照你提供的欄位規格整理，視覺則改成更柔和、乾淨的韓系風格。之後接上
@@ -115,8 +115,8 @@ export function RSVPForm() {
           </p>
 
           <div className="p-1 md:rounded-[1.7rem] md:border md:border-white/65 md:bg-[#f7ebe3]/82 md:p-5 md:shadow-soft">
-            <p className="text-sm leading-7 text-ink/75">填寫提醒</p>
-            <ul className="mt-3 space-y-2 text-sm leading-7 text-ink/65">
+            <p className="text-lg leading-7 text-ink/75">填寫提醒</p>
+            <ul className="mt-3 space-y-2 text-lg leading-7 text-ink/65">
               <li>請於截止日前完成回覆。</li>
               <li>選擇紙本喜帖時，系統會要求填寫收件地址。</li>
               <li>若選擇不出席，出席人數等欄位會自動收起。</li>
@@ -245,7 +245,7 @@ export function RSVPForm() {
 
           <div className="mt-6 space-y-3">
             <button
-              className="inline-flex w-full items-center justify-center rounded-full bg-[#7a2234] px-6 py-4 text-sm font-medium tracking-[0.25em] text-white transition hover:bg-[#651a2a] disabled:cursor-not-allowed disabled:opacity-70"
+              className="inline-flex w-full items-center justify-center rounded-full bg-[#7a2234] px-6 py-4 text-lg font-medium tracking-[0.25em] text-white transition hover:bg-[#651a2a] disabled:cursor-not-allowed disabled:opacity-70"
               disabled={submitting}
               type="submit"
             >
@@ -253,10 +253,10 @@ export function RSVPForm() {
             </button>
 
             {visibleErrors.length > 0 ? (
-              <p className="text-sm leading-7 text-[#9a4352]">請先完成必填欄位並確認格式。</p>
+              <p className="text-lg leading-7 text-[#9a4352]">請先完成必填欄位並確認格式。</p>
             ) : null}
             {submitError ? (
-              <p className="rounded-2xl bg-[#ead0ca] px-4 py-3 text-sm leading-7 text-[#8b3948]">
+              <p className="rounded-2xl bg-[#ead0ca] px-4 py-3 text-lg leading-7 text-[#8b3948]">
                 {submitError}
               </p>
             ) : null}
@@ -310,11 +310,11 @@ function FieldShell({
   return (
     <label className="block rounded-[1.4rem] border border-sand bg-[#fff7f1] px-5 py-4">
       <div className="mb-3 flex items-center justify-between gap-3">
-        <span className="text-lg text-ink">
+        <span className="text-xl text-ink">
           {required ? <span className="mr-1 text-[#9a4352]">*</span> : null}
           {label}
         </span>
-        {error ? <span className="text-sm text-[#9a4352]">{error}</span> : null}
+        {error ? <span className="text-lg text-[#9a4352]">{error}</span> : null}
       </div>
       {children}
     </label>
@@ -339,7 +339,7 @@ function TextField({
   return (
     <FieldShell label={label} required={required} error={error}>
       <input
-        className="w-full border-0 bg-transparent px-0 py-1 text-base text-ink outline-none placeholder:text-ink/25"
+        className="w-full border-0 bg-transparent px-0 py-1 text-xl text-ink outline-none placeholder:text-ink/25"
         inputMode={inputMode}
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -364,7 +364,7 @@ function TextAreaField({
   return (
     <FieldShell label={label} required={required} error={error}>
       <textarea
-        className="min-h-28 w-full resize-y border-0 bg-transparent px-0 py-1 text-base text-ink outline-none placeholder:text-ink/25"
+        className="min-h-28 w-full resize-y border-0 bg-transparent px-0 py-1 text-xl text-ink outline-none placeholder:text-ink/25"
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />
@@ -390,7 +390,7 @@ function SelectField({
   return (
     <FieldShell label={label} required={required} error={error}>
       <select
-        className="w-full appearance-none border-0 bg-transparent px-0 py-1 text-base text-ink outline-none"
+        className="w-full appearance-none border-0 bg-transparent px-0 py-1 text-xl text-ink outline-none"
         value={value}
         onChange={(event) => onChange(event.target.value)}
       >

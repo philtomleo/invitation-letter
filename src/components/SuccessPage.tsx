@@ -7,7 +7,7 @@ export function SuccessPage({ attendance }: { attendance: 'attending' | 'absent'
     <div className="flex min-h-screen items-center bg-[linear-gradient(180deg,#f7efe8_0%,#f3e4da_45%,#eed9cf_100%)] px-6 py-12 text-ink md:px-10">
       <div className="mx-auto max-w-4xl">
         <section className="rounded-[2.2rem] border border-white/70 bg-white/80 px-6 py-10 text-center shadow-soft backdrop-blur md:px-10 md:py-14">
-          <p className="text-sm tracking-[0.35em] text-[#7a2234]">RSVP RECEIVED</p>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">RSVP RECEIVED</p>
           <h1 className="mt-4 font-serif text-4xl text-ink md:text-6xl">表單已成功送出，謝謝您的回覆！</h1>
           <p className="mx-auto mt-5 max-w-2xl leading-8 text-ink/70">
             {isAttending
@@ -18,7 +18,7 @@ export function SuccessPage({ attendance }: { attendance: 'attending' | 'absent'
           {isAttending ? (
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <a
-                className="inline-flex items-center justify-center rounded-full bg-[#7a2234] px-6 py-3 text-sm font-medium tracking-[0.15em] text-white transition hover:bg-[#651a2a]"
+                className="inline-flex items-center justify-center rounded-full bg-[#7a2234] px-6 py-3 text-lg font-medium tracking-[0.15em] text-white transition hover:bg-[#651a2a]"
                 href={buildCalendarUrl()}
                 rel="noreferrer"
                 target="_blank"
@@ -26,7 +26,7 @@ export function SuccessPage({ attendance }: { attendance: 'attending' | 'absent'
                 加入行事曆
               </a>
               <a
-                className="inline-flex items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f2]/90 px-6 py-3 text-sm font-medium tracking-[0.15em] text-[#7a2234] transition hover:border-[#7a2234]/35 hover:bg-white"
+                className="inline-flex items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f2]/90 px-6 py-3 text-lg font-medium tracking-[0.15em] text-[#7a2234] transition hover:border-[#7a2234]/35 hover:bg-white"
                 href={weddingInfo.mapUrl}
                 rel="noreferrer"
                 target="_blank"

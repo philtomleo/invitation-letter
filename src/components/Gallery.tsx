@@ -25,11 +25,11 @@ export function Gallery() {
     <section className="px-6 py-16 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 text-center md:text-left">
-          <p className="text-sm tracking-[0.35em] text-[#7a2234]">PHOTO STORY</p>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">PHOTO STORY</p>
           <h2 className="mt-3 font-serif text-4xl text-ink md:text-5xl">把我們喜歡的片刻放進來</h2>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-[1.2fr_0.8fr]">
+        <div>
           <article className="overflow-hidden rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 shadow-soft">
             <div className="relative">
               <div className="transition-all duration-500">
@@ -47,43 +47,13 @@ export function Gallery() {
               <CarouselButton className="right-3 top-[calc(100%-1rem)] -translate-y-1/2 md:right-4 md:top-[calc(100%-1.5rem)]" direction="right" label="下一張" onClick={goToNext} />
             </div>
             <div className="space-y-3 p-6 md:p-8">
-              <p className="text-sm tracking-[0.28em] text-[#7a2234]/70">
+              <p className="text-lg tracking-[0.28em] text-[#7a2234]/70">
                 {String(activeIndex + 1).padStart(2, '0')} / {String(galleryPhotos.length).padStart(2, '0')}
               </p>
               <h3 className="font-serif text-3xl text-ink md:text-4xl">{activeItem.title}</h3>
               <p className="max-w-xl leading-8 text-ink/70">{activeItem.description}</p>
             </div>
           </article>
-
-          <div className="grid gap-4 sm:grid-cols-3 md:grid-cols-1">
-            {galleryPhotos.map((item, index) => (
-              <button
-                key={item.title}
-                className={[
-                  'overflow-hidden rounded-[1.7rem] border bg-[#fff8f3]/78 text-left shadow-soft transition duration-300',
-                  activeIndex === index
-                    ? 'border-[#7a2234]/40 ring-1 ring-[#7a2234]/20'
-                    : 'border-white/70 hover:border-[#7a2234]/20',
-                ].join(' ')}
-                type="button"
-                onClick={() => setActiveIndex(index)}
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    alt={item.title}
-                    className="h-full w-full object-cover object-center"
-                    decoding="async"
-                    loading="lazy"
-                    src={item.image}
-                  />
-                </div>
-                <div className="space-y-1 p-4">
-                  <h3 className="font-serif text-2xl text-ink">{item.title}</h3>
-                  <p className="line-clamp-2 text-sm leading-6 text-ink/65">{item.description}</p>
-                </div>
-              </button>
-            ))}
-          </div>
         </div>
       </div>
     </section>
