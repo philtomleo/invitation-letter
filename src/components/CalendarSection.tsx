@@ -77,7 +77,7 @@ export function CalendarSection() {
         <div className="rounded-[2rem] border border-white/70 bg-[linear-gradient(135deg,rgba(255,249,244,0.92),rgba(226,193,184,0.82))] p-6 shadow-soft backdrop-blur md:p-8">
           <p className="text-lg tracking-[0.35em] text-[#7a2234]">COUNTDOWN</p>
           <h2 className="mt-3 font-serif text-4xl text-ink">幸福倒數中</h2>
-          <p className="mt-4 max-w-lg leading-8 text-ink/70">
+          <p className="mt-4 max-w-lg text-lg leading-8 text-ink/70">
             距離 2026 年 9 月 19 日午宴 12:00 開桌，還有一點點時間把這天好好記在心裡。
           </p>
 
@@ -97,7 +97,7 @@ function CountdownCard({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-[1.6rem] border border-white/70 bg-[#fff8f3]/88 p-5 text-center shadow-soft">
       <p className="font-serif text-4xl text-ink md:text-5xl">{String(value).padStart(2, '0')}</p>
-      <p className="mt-2 text-xs tracking-[0.3em] text-[#7a2234]/70">{label}</p>
+      <p className="mt-2 text-lg tracking-[0.3em] text-[#7a2234]/70">{label}</p>
     </div>
   );
 }

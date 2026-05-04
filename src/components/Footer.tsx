@@ -12,7 +12,7 @@ export function Footer({ attendance }: { attendance?: 'attending' | 'absent' }) 
             <p className="mt-3 font-serif text-4xl text-ink">
               {weddingInfo.groom} & {weddingInfo.bride}
             </p>
-            <p className="mt-3 leading-8 text-ink/70">
+            <p className="mt-3 text-lg leading-8 text-ink/70">
               {isAbsent
                 ? '很可惜您無法出席，但我們收到您的祝福了！'
                 : `謝謝你看到這裡，期待在 ${weddingInfo.dateLabel} 與你相見。`}

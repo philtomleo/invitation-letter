@@ -8,7 +8,7 @@ export function Hero() {
       <div className="mx-auto max-w-6xl">
         <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6 text-center md:text-left">
-            <p className="inline-flex rounded-full border border-[#7a2234]/20 bg-[#fff8f2]/90 px-4 py-2 text-xs tracking-[0.35em] text-[#7a2234]">
+            <p className="inline-flex rounded-full border border-[#7a2234]/20 bg-[#fff8f2]/90 px-4 py-2 text-lg tracking-[0.35em] text-[#7a2234]">
               WEDDING INVITATION
             </p>
             <div className="space-y-4">
@@ -16,13 +16,13 @@ export function Hero() {
                 {weddingInfo.title}
               </h1>
               <div className="flex flex-wrap items-end justify-center gap-x-8 gap-y-3 text-[#7a2234] md:justify-start">
-                <div className="space-y-1">
+                <div className="space-y-0">
                   <p className="text-2xl tracking-[0.18em] md:text-3xl">{weddingInfo.groom}</p>
-                  <p className="text-xs tracking-[0.32em] text-ink/50">GROOM</p>
+                  <p className="-mt-2 text-base tracking-[0.32em] text-ink/50">GROOM</p>
                 </div>
-                <div className="space-y-1">
+                <div className="space-y-0">
                   <p className="text-2xl tracking-[0.18em] md:text-3xl">{weddingInfo.bride}</p>
-                  <p className="text-xs tracking-[0.32em] text-ink/50">BRIDE</p>
+                  <p className="-mt-2 text-base tracking-[0.32em] text-ink/50">BRIDE</p>
                 </div>
               </div>
             </div>
@@ -70,14 +70,14 @@ export function Hero() {
                   src={photo0360}
                 />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.16),rgba(67,34,28,0.12))]" />
-                <div className="absolute inset-6 flex h-[calc(100%-3rem)] flex-col justify-between rounded-[1.35rem] border border-white/55 p-6 text-ink">
-                  <div className="space-y-3">
-                    <p className="text-lg tracking-[0.35em] text-[#7a2234]/80">SAVE THE DATE</p>
-                    <p className="font-serif text-4xl leading-none md:text-5xl">2026 / 09 / 19</p>
-                    <p className="text-lg tracking-[0.25em] text-[#7a2234]/80">SATURDAY</p>
+                <div className="absolute inset-4 flex h-[calc(100%-2rem)] flex-col justify-between rounded-[1.35rem] border border-white/55 p-5 text-ink md:inset-6 md:h-[calc(100%-3rem)] md:p-6">
+                  <div className="space-y-4 md:space-y-3">
+                    <p className="text-base tracking-[0.32em] text-[#7a2234]/80 md:text-lg md:tracking-[0.35em]">SAVE THE DATE</p>
+                    <p className="font-serif text-[2.15rem] leading-[1.1] md:text-5xl md:leading-none">2026 / 09 / 19</p>
+                    <p className="text-base tracking-[0.22em] text-[#7a2234]/80 md:text-lg md:tracking-[0.25em]">SATURDAY</p>
                   </div>
-                  <div className="mb-0 translate-x-2 translate-y-2 self-end text-right md:-mr-2 md:mb-3 md:translate-x-0 md:translate-y-0">
-                    <p className="font-serif text-3xl tracking-[0.08em] text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.45)] md:text-[2.6rem]">
+                  <div className="mb-1 self-end text-right md:-mr-2 md:mb-3">
+                    <p className="font-serif text-[2rem] tracking-[0.08em] text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.45)] md:text-[2.6rem]">
                       怡翔&培紹
                     </p>
                   </div>

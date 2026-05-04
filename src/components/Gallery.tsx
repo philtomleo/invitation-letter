@@ -51,7 +51,7 @@ export function Gallery() {
                 {String(activeIndex + 1).padStart(2, '0')} / {String(galleryPhotos.length).padStart(2, '0')}
               </p>
               <h3 className="font-serif text-3xl text-ink md:text-4xl">{activeItem.title}</h3>
-              <p className="max-w-xl leading-8 text-ink/70">{activeItem.description}</p>
+              <p className="max-w-xl text-lg leading-8 text-ink/70">{activeItem.description}</p>
             </div>
           </article>
         </div>

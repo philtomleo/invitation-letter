@@ -110,7 +110,7 @@ export function RSVPForm() {
         <div className="space-y-4 text-center md:text-left">
           <p className="text-lg tracking-[0.35em] text-[#7a2234]">RSVP</p>
           <h2 className="font-serif text-4xl text-ink md:text-5xl">敬請留下回覆</h2>
-          <p className="mx-auto max-w-md leading-8 text-ink/70 md:mx-0">
+          <p className="mx-auto max-w-md text-lg leading-8 text-ink/70 md:mx-0">
             無論是否能到場，都希望您能撥空協助填寫表單，即使當天無法親自前來，也歡迎在表單結尾留下給我們的祝福，讓我們能帶著這份暖意，邁向人生的下一個階段。
           </p>
 

@@ -7,13 +7,13 @@ export function WeddingInfo() {
         <div className="space-y-4">
           <p className="text-lg tracking-[0.35em] text-[#7a2234]">CEREMONY DETAILS</p>
           <h2 className="font-serif text-4xl text-ink md:text-5xl">把重要資訊放在最前面</h2>
-          <p className="max-w-md leading-8 text-ink/70">
+          <p className="max-w-md text-lg leading-8 text-ink/70">
             經過長達8年的相愛相殺，我們決定要給彼此一個堅定的承諾，一起去勇闖人生下半場了！
           </p>
-          <p className="max-w-md leading-8 text-ink/70">
+          <p className="max-w-md text-lg leading-8 text-ink/70">
             誠摯邀請珍貴的各位來吃吃喝喝、一同來見證這份磨練後的愛情！
           </p>
-          <p className="max-w-md leading-8 text-ink/70">
+          <p className="max-w-md text-lg leading-8 text-ink/70">
             有些風景，一起看才美；有些喜悅，與您們分享才完整❣️
           </p>
         </div>
