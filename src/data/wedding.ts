@@ -17,11 +17,9 @@ export const weddingInfo = {
   rsvpDeadline: '2026 / 05 / 20',
 };
 
-export const timelineNotes = [
-  '誠摯邀請您與我們一同見證這份幸福時刻。',
-  '婚禮資訊與回覆表單皆集中於本頁，手機閱讀也很方便。',
-  '照片區目前為示意版位，之後可直接替換成你們的婚紗照。',
-];
+export const copySettings = {
+  rsvpDeadlineShort: '5/20',
+};
 
 export const galleryPhotos = [
   {

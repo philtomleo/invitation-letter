@@ -1,4 +1,5 @@
 import { FormEvent, useMemo, useState } from 'react';
+import { copySettings } from '../data/wedding';
 import type { RSVPFormPayload } from '../lib/api';
 import { submitRsvp } from '../lib/api';
 
@@ -110,16 +111,16 @@ export function RSVPForm() {
           <p className="text-lg tracking-[0.35em] text-[#7a2234]">RSVP</p>
           <h2 className="font-serif text-4xl text-ink md:text-5xl">敬請留下回覆</h2>
           <p className="mx-auto max-w-md leading-8 text-ink/70 md:mx-0">
-            表單內容依照你提供的欄位規格整理，視覺則改成更柔和、乾淨的韓系風格。之後接上
-            Google Sheets 後，就能直接彙整賓客名單。
+            無論是否能到場，都希望您能撥空協助填寫表單，即使當天無法親自前來，也歡迎在表單結尾留下給我們的祝福，讓我們能帶著這份暖意，邁向人生的下一個階段。
           </p>
 
           <div className="p-1 md:rounded-[1.7rem] md:border md:border-white/65 md:bg-[#f7ebe3]/82 md:p-5 md:shadow-soft">
-            <p className="text-lg leading-7 text-ink/75">填寫提醒</p>
+            <p className="text-lg leading-7 text-ink/75">溫馨提醒：</p>
             <ul className="mt-3 space-y-2 text-lg leading-7 text-ink/65">
-              <li>請於截止日前完成回覆。</li>
-              <li>選擇紙本喜帖時，系統會要求填寫收件地址。</li>
-              <li>若選擇不出席，出席人數等欄位會自動收起。</li>
+              <li>
+                您的回覆對我們安排座位和餐點至關重要，請務必在 {copySettings.rsvpDeadlineShort}{' '}
+                前填寫完畢。
+              </li>
             </ul>
           </div>
         </div>

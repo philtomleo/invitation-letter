@@ -73,10 +73,10 @@ export function Hero() {
                 <div className="absolute inset-6 flex h-[calc(100%-3rem)] flex-col justify-between rounded-[1.35rem] border border-white/55 p-6 text-ink">
                   <div className="space-y-3">
                     <p className="text-lg tracking-[0.35em] text-[#7a2234]/80">SAVE THE DATE</p>
-                    <p className="font-serif text-4xl leading-none md:text-5xl">09.19</p>
+                    <p className="font-serif text-4xl leading-none md:text-5xl">2026 / 09 / 19</p>
                     <p className="text-lg tracking-[0.25em] text-[#7a2234]/80">SATURDAY</p>
                   </div>
-                  <div className="-mr-1 mb-1 self-end text-right md:-mr-2 md:mb-3">
+                  <div className="mb-0 translate-x-2 translate-y-2 self-end text-right md:-mr-2 md:mb-3 md:translate-x-0 md:translate-y-0">
                     <p className="font-serif text-3xl tracking-[0.08em] text-[#412a24] drop-shadow-[0_1px_1px_rgba(255,248,243,0.45)] md:text-[2.6rem]">
                       怡翔&培紹
                     </p>

@@ -87,10 +87,6 @@ export function CalendarSection() {
             <CountdownCard label="Minutes" value={countdown.minutes} />
             <CountdownCard label="Seconds" value={countdown.seconds} />
           </div>
-
-          <p className="mt-8 text-lg leading-7 text-ink/60">
-            如果目前時間已超過宴客時間，倒數會自動停在 0，之後也可以改成婚禮回顧版本。
-          </p>
         </div>
       </div>
     </section>
