@@ -1,17 +1,88 @@
+import { useEffect, useState } from 'react';
+import photo0135 from './images/webp/260302_0135.webp';
+import photo0360 from './images/webp/260302_0360.webp';
 import { CalendarSection } from './components/CalendarSection';
 import { Gallery } from './components/Gallery';
 import { Hero } from './components/Hero';
 import { RSVPForm } from './components/RSVPForm';
 import { SuccessPage } from './components/SuccessPage';
 import { WeddingInfo } from './components/WeddingInfo';
+import { galleryPhotos } from './data/wedding';
+
+function preloadImage(src: string) {
+  return new Promise<void>((resolve) => {
+    const image = new Image();
+    image.onload = () => resolve();
+    image.onerror = () => resolve();
+    image.src = src;
+  });
+}
+
+function waitForFonts() {
+  if ('fonts' in document) {
+    return document.fonts.ready.then(() => undefined).catch(() => undefined);
+  }
+
+  return Promise.resolve();
+}
+
+function LoadingScreen() {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[linear-gradient(180deg,#f7efe8_0%,#f3e4da_45%,#eed9cf_100%)] px-6 text-center">
+      <div className="envelope-loader" aria-hidden="true">
+        <div className="envelope-loader__card">
+          <div className="envelope-loader__heart" />
+        </div>
+        <div className="envelope-loader__body" />
+        <div className="envelope-loader__front" />
+        <div className="envelope-loader__flap" />
+        <div className="envelope-loader__seal" />
+      </div>
+    </div>
+  );
+}
 
 function App() {
   const params = new URLSearchParams(window.location.search);
   const submitted = params.get('submitted') === '1';
   const attendance = params.get('attendance');
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const assetQueue = submitted
+      ? [waitForFonts()]
+      : [
+          waitForFonts(),
+          preloadImage(photo0135),
+          preloadImage(photo0360),
+          preloadImage(galleryPhotos[0]?.image ?? ''),
+        ];
+
+    const minimumDelay = new Promise((resolve) => window.setTimeout(resolve, 1800));
+    const fallbackTimeout = new Promise((resolve) => window.setTimeout(resolve, 4000));
+
+    Promise.race([
+      Promise.allSettled([...assetQueue, minimumDelay]),
+      fallbackTimeout,
+    ]).then(() => {
+      if (!cancelled) {
+        setIsReady(true);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [submitted]);
 
   if (submitted && (attendance === 'attending' || attendance === 'absent')) {
-    return <SuccessPage attendance={attendance} />;
+    return isReady ? <SuccessPage attendance={attendance} /> : <LoadingScreen />;
+  }
+
+  if (!isReady) {
+    return <LoadingScreen />;
   }
 
   return (

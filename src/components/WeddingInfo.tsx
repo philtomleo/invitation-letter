@@ -6,7 +6,7 @@ export function WeddingInfo() {
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.85fr_1.15fr]">
         <div className="space-y-4">
           <p className="text-lg tracking-[0.35em] text-[#7a2234]">CEREMONY DETAILS</p>
-          <h2 className="font-serif text-4xl text-ink md:text-5xl">把重要資訊放在最前面</h2>
+          <h2 className="font-serif text-4xl text-ink md:text-5xl">8 YEARS & BEYOND</h2>
           <p className="max-w-md text-lg leading-8 text-ink/70">
             經過長達8年的相愛相殺，我們決定要給彼此一個堅定的承諾，一起去勇闖人生下半場了！
           </p>
