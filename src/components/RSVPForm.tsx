@@ -114,7 +114,7 @@ export function RSVPForm() {
             無論是否能到場，都希望您能撥空協助填寫表單，即使當天無法親自前來，也歡迎在表單結尾留下給我們的祝福，讓我們能帶著這份暖意，邁向人生的下一個階段。
           </p>
 
-          <div className="p-1 md:rounded-[1.7rem] md:border md:border-white/65 md:bg-[#f7ebe3]/82 md:p-5 md:shadow-soft">
+          <div className="rounded-[1.7rem] border border-white/65 bg-[#f7ebe3]/82 p-5 shadow-soft">
             <p className="text-lg leading-7 text-ink/75">溫馨提醒：</p>
             <ul className="mt-3 space-y-2 text-lg leading-7 text-ink/65">
               <li>
