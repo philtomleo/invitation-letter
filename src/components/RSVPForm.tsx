@@ -115,8 +115,8 @@ export function RSVPForm() {
           </p>
 
           <div className="rounded-[1.7rem] border border-white/65 bg-[#f7ebe3]/82 p-5 shadow-soft">
-            <p className="text-lg leading-7 text-ink/75">溫馨提醒：</p>
-            <ul className="mt-3 space-y-2 text-lg leading-7 text-ink/65">
+            <p className="text-lg leading-7 text-[#6f2435]">溫馨提醒：</p>
+            <ul className="mt-3 space-y-2 text-lg leading-7 text-[#7a3b47]">
               <li>
                 您的回覆對我們安排座位和餐點至關重要，請務必在 {copySettings.rsvpDeadlineShort}{' '}
                 前填寫完畢。
