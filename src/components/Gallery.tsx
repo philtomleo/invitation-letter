@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { galleryPhotos } from '../data/wedding';
+import { useInvitation } from '../context/InvitationContext';
 
 export function Gallery() {
+  const invitation = useInvitation();
+  const galleryPhotos = invitation.gallery.photos;
   const [activeIndex, setActiveIndex] = useState(0);
   const activeItem = galleryPhotos[activeIndex];
 
@@ -25,18 +27,21 @@ export function Gallery() {
     <section className="px-6 py-16 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 text-center md:text-left">
-          <p className="text-lg tracking-[0.35em] text-[#7a2234]">PHOTO STORY</p>
-          <h2 className="mt-3 font-serif text-4xl text-ink md:text-5xl">把我們喜歡的片刻放進來</h2>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">{invitation.gallery.eyebrow}</p>
+          <h2 className="mt-3 font-serif text-4xl text-ink md:text-5xl">{invitation.gallery.title}</h2>
+          {invitation.gallery.intro ? (
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-ink/70 md:mx-0">{invitation.gallery.intro}</p>
+          ) : null}
         </div>
 
         <div>
           <article className="overflow-hidden rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 shadow-soft">
             <div className="relative">
               <div className="transition-all duration-500">
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden bg-[#f6ebe4] md:h-[28rem] lg:h-[32rem]">
                   <img
                     alt={activeItem.title}
-                    className="block h-auto w-full"
+                    className="block h-auto w-full md:h-full md:object-contain"
                     decoding="async"
                     loading="lazy"
                     src={activeItem.image}

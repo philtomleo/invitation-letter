@@ -1,6 +1,5 @@
-const eventDate = new Date('2026-09-19T12:00:00+08:00');
-
-export function getCountdownParts(now = new Date()) {
+export function getCountdownParts(eventDateValue: string, now = new Date()) {
+  const eventDate = new Date(eventDateValue);
   const diff = eventDate.getTime() - now.getTime();
   const safeDiff = Math.max(diff, 0);
 
@@ -18,9 +17,11 @@ export function getCountdownParts(now = new Date()) {
   };
 }
 
-export function buildSeptemberCalendar() {
-  const year = 2026;
-  const monthIndex = 8;
+export function buildEventCalendar(eventDateValue: string) {
+  const eventDate = new Date(eventDateValue);
+  const year = eventDate.getFullYear();
+  const monthIndex = eventDate.getMonth();
+  const eventDay = eventDate.getDate();
   const firstDay = new Date(year, monthIndex, 1).getDay();
   const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
 
@@ -31,7 +32,7 @@ export function buildSeptemberCalendar() {
   }
 
   for (let day = 1; day <= daysInMonth; day += 1) {
-    cells.push({ day, isEventDay: day === 19 });
+    cells.push({ day, isEventDay: day === eventDay });
   }
 
   while (cells.length % 7 !== 0) {

@@ -13,11 +13,7 @@ export type RSVPFormPayload = {
   note: string;
 };
 
-const endpoint =
-  import.meta.env.VITE_GOOGLE_SCRIPT_URL ||
-  'https://script.google.com/macros/s/AKfycbxkSuYIEIrTzog-Fow7aJau9J27hrdcVozHH9tRWqzAatAmNCczgWeJ9WUqnD_o-n5f/exec';
-
-export async function submitRsvp(payload: RSVPFormPayload) {
+export async function submitRsvp(endpoint: string, payload: RSVPFormPayload) {
   if (!endpoint) {
     await new Promise((resolve) => setTimeout(resolve, 800));
     return {

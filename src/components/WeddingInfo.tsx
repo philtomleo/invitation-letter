@@ -1,28 +1,30 @@
-import { weddingInfo } from '../data/wedding';
+import { useInvitation } from '../context/InvitationContext';
 
 export function WeddingInfo() {
+  const invitation = useInvitation();
+
   return (
     <section className="px-6 py-16 md:px-10">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[0.85fr_1.15fr]">
         <div className="space-y-4">
-          <p className="text-lg tracking-[0.35em] text-[#7a2234]">CEREMONY DETAILS</p>
-          <h2 className="font-serif text-4xl text-ink md:text-5xl">8 YEARS & BEYOND</h2>
-          <p className="max-w-md text-lg leading-8 text-ink/70">
-            經過長達8年的相愛相殺，我們決定要給彼此一個堅定的承諾，一起去勇闖人生下半場了！
-          </p>
-          <p className="max-w-md text-lg leading-8 text-ink/70">
-            誠摯邀請珍貴的各位來吃吃喝喝、一同來見證這份磨練後的愛情！
-          </p>
-          <p className="max-w-md text-lg leading-8 text-ink/70">
-            有些風景，一起看才美；有些喜悅，與您們分享才完整❣️
-          </p>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">{invitation.weddingInfo.eyebrow}</p>
+          <h2 className="font-serif text-4xl text-ink md:text-5xl">{invitation.weddingInfo.title}</h2>
+          {invitation.weddingInfo.paragraphs.map((paragraph) => (
+            <p key={paragraph} className="max-w-md text-lg leading-8 text-ink/70">
+              {paragraph}
+            </p>
+          ))}
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          <DetailCard title="婚宴時間" content={weddingInfo.timeLabel} subContent={weddingInfo.dateLabel} />
-          <DetailCard title="婚宴場地" content={weddingInfo.venue} subContent={weddingInfo.address} />
-          <DetailCard title="RSVP 截止日" content={weddingInfo.rsvpDeadline} subContent="敬請於截止日前完成回覆" />
-          <DetailCard title="交通資訊" content="台北捷運文湖線 / 開車皆方便抵達" subContent="實際路線可由地圖按鈕查看" />
+          {invitation.weddingInfo.cards.map((card) => (
+            <DetailCard
+              key={card.title}
+              title={card.title}
+              content={card.content}
+              subContent={card.subContent}
+            />
+          ))}
         </div>
       </div>
     </section>

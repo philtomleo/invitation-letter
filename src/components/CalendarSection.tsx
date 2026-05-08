@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react';
-import { buildSeptemberCalendar, getCountdownParts } from '../lib/date';
+import { useInvitation } from '../context/InvitationContext';
+import { buildEventCalendar, getCountdownParts } from '../lib/date';
 
 const weekLabels = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-const calendarCells = buildSeptemberCalendar();
 
 export function CalendarSection() {
-  const [countdown, setCountdown] = useState(getCountdownParts());
+  const invitation = useInvitation();
+  const calendarCells = buildEventCalendar(invitation.event.eventDate);
+  const [countdown, setCountdown] = useState(getCountdownParts(invitation.event.eventDate));
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setCountdown(getCountdownParts());
+      setCountdown(getCountdownParts(invitation.event.eventDate));
     }, 1000);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [invitation.event.eventDate]);
 
   return (
     <section className="px-6 py-16 md:px-10">
@@ -21,17 +23,17 @@ export function CalendarSection() {
         <div className="rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 p-6 shadow-soft backdrop-blur md:p-8">
           <div className="mb-6 flex items-end justify-between">
             <div>
-              <p className="text-lg tracking-[0.35em] text-[#7a2234]">SEPTEMBER 2026</p>
-              <h2 className="mt-3 font-serif text-4xl text-ink">把 9/19 留給我們</h2>
+              <p className="text-lg tracking-[0.35em] text-[#7a2234]">{invitation.calendar.monthLabel}</p>
+              <h2 className="mt-3 font-serif text-4xl text-ink">{invitation.calendar.title}</h2>
             </div>
             <div className="rounded-full bg-[#ead1ca] px-4 py-2 text-lg tracking-[0.25em] text-[#7a2234]">
-              SAT
+              {invitation.calendar.weekdayChip}
             </div>
           </div>
 
           <div className="grid grid-cols-7 gap-2 text-center">
             {weekLabels.map((label) => (
-              <div key={label} className="pb-2 text-xs tracking-[0.25em] text-[#7a2234]/60">
+              <div key={label} className="pb-2 text-lg tracking-[0.25em] text-[#7a2234]/60">
                 {label}
               </div>
             ))}
@@ -75,10 +77,10 @@ export function CalendarSection() {
         </div>
 
         <div className="rounded-[2rem] border border-white/70 bg-[linear-gradient(135deg,rgba(255,249,244,0.92),rgba(226,193,184,0.82))] p-6 shadow-soft backdrop-blur md:p-8">
-          <p className="text-lg tracking-[0.35em] text-[#7a2234]">COUNTDOWN</p>
-          <h2 className="mt-3 font-serif text-4xl text-ink">幸福倒數中</h2>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">{invitation.calendar.countdownEyebrow}</p>
+          <h2 className="mt-3 font-serif text-4xl text-ink">{invitation.calendar.countdownTitle}</h2>
           <p className="mt-4 max-w-lg text-lg leading-8 text-ink/70">
-            距離 2026 年 9 月 19 日午宴 12:00 開桌，還有一點點時間把這天好好記在心裡。
+            {invitation.calendar.countdownDescription}
           </p>
 
           <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -87,6 +89,10 @@ export function CalendarSection() {
             <CountdownCard label="Minutes" value={countdown.minutes} />
             <CountdownCard label="Seconds" value={countdown.seconds} />
           </div>
+
+          {invitation.calendar.countdownFooter ? (
+            <p className="mt-8 text-lg leading-7 text-ink/60">{invitation.calendar.countdownFooter}</p>
+          ) : null}
         </div>
       </div>
     </section>

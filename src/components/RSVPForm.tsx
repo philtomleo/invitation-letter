@@ -1,5 +1,5 @@
 import { FormEvent, useMemo, useState } from 'react';
-import { copySettings } from '../data/wedding';
+import { useInvitation } from '../context/InvitationContext';
 import type { RSVPFormPayload } from '../lib/api';
 import { submitRsvp } from '../lib/api';
 
@@ -21,6 +21,7 @@ const initialForm: RSVPFormPayload = {
 type Errors = Partial<Record<keyof RSVPFormPayload, string>>;
 
 export function RSVPForm() {
+  const invitation = useInvitation();
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
@@ -51,7 +52,7 @@ export function RSVPForm() {
     setSubmitting(true);
 
     try {
-      await submitRsvp(form);
+      await submitRsvp(invitation.googleScriptUrl, form);
       const nextAttendance = form.attendance === attendingOption ? 'attending' : 'absent';
       const nextUrl = new URL(window.location.href);
       nextUrl.searchParams.set('submitted', '1');
@@ -108,19 +109,16 @@ export function RSVPForm() {
     <section id="rsvp" className="px-6 py-16 md:px-10">
       <div className="mx-auto grid max-w-6xl gap-8 md:rounded-[2.4rem] md:border md:border-white/60 md:bg-[#ecd7cc]/55 md:p-8 md:shadow-soft md:backdrop-blur md:grid-cols-[0.78fr_1.22fr]">
         <div className="space-y-4 text-center md:text-left">
-          <p className="text-lg tracking-[0.35em] text-[#7a2234]">RSVP</p>
-          <h2 className="font-serif text-4xl text-ink md:text-5xl">敬請留下回覆</h2>
-          <p className="mx-auto max-w-md text-lg leading-8 text-ink/70 md:mx-0">
-            無論是否能到場，都希望您能撥空協助填寫表單，即使當天無法親自前來，也歡迎在表單結尾留下給我們的祝福，讓我們能帶著這份暖意，邁向人生的下一個階段。
-          </p>
+          <p className="text-lg tracking-[0.35em] text-[#7a2234]">{invitation.rsvp.eyebrow}</p>
+          <h2 className="font-serif text-4xl text-ink md:text-5xl">{invitation.rsvp.title}</h2>
+          <p className="mx-auto max-w-md text-lg leading-8 text-ink/70 md:mx-0">{invitation.rsvp.intro}</p>
 
           <div className="rounded-[1.7rem] border border-white/65 bg-[#f7ebe3]/82 p-5 shadow-soft">
-            <p className="text-lg leading-7 text-[#6f2435]">溫馨提醒：</p>
+            <p className="text-lg leading-7 text-[#6f2435]">{invitation.rsvp.reminderTitle}</p>
             <ul className="mt-3 space-y-2 text-lg leading-7 text-[#7a3b47]">
-              <li>
-                您的回覆對我們安排座位和餐點至關重要，請務必在 {copySettings.rsvpDeadlineShort}{' '}
-                前填寫完畢。
-              </li>
+              {invitation.rsvp.reminderItems.map((item) => (
+                <li key={item}>{item.replace('{rsvpDeadlineShort}', invitation.event.rsvpDeadlineShort)}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -146,20 +144,11 @@ export function RSVPForm() {
               error={errors.phone}
             />
             <SelectField
-              label="您和培紹的關係？"
+              label={invitation.rsvp.relationLabel}
               required
               value={form.brideRelation}
               onChange={(value) => updateField('brideRelation', value)}
-              options={[
-                '培紹爸媽朋友',
-                '培紹親戚',
-                '培紹國小朋友',
-                '培紹國中朋友',
-                '培紹高中朋友',
-                '培紹大學朋友',
-                '培紹同事',
-                '培紹其他朋友',
-              ]}
+              options={invitation.rsvp.relationOptions}
               error={errors.brideRelation}
             />
             <SelectField
@@ -212,7 +201,7 @@ export function RSVPForm() {
                   required
                   value={form.childSeatCount}
                   onChange={(value) => updateField('childSeatCount', value)}
-                  options={['0', '1', '2', '3', '4', '5','6','7','8','9','10']}
+                  options={['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
                   error={errors.childSeatCount}
                 />
                 <SelectField
@@ -220,7 +209,7 @@ export function RSVPForm() {
                   required
                   value={form.vegetarianCount}
                   onChange={(value) => updateField('vegetarianCount', value)}
-                  options={['0', '1', '2', '3', '4', '5','6','7','8','9','10']}
+                  options={['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']}
                   error={errors.vegetarianCount}
                 />
               </>
@@ -237,7 +226,7 @@ export function RSVPForm() {
             ) : null}
 
             <TextAreaField
-              label="想對 怡翔&培紹 說的話"
+              label={invitation.rsvp.noteLabel}
               value={form.note}
               onChange={(value) => updateField('note', value)}
               error={errors.note}

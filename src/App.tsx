@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import photo0135 from './images/webp/260302_0135.webp';
-import photo0360 from './images/webp/260302_0360.webp';
 import { CalendarSection } from './components/CalendarSection';
 import { Gallery } from './components/Gallery';
 import { Hero } from './components/Hero';
 import { RSVPForm } from './components/RSVPForm';
 import { SuccessPage } from './components/SuccessPage';
 import { WeddingInfo } from './components/WeddingInfo';
-import { galleryPhotos } from './data/wedding';
+import { InvitationProvider } from './context/InvitationContext';
+import { getInvitationConfig } from './data/invitations';
+import { getVariantFromLocation } from './lib/routing';
 
 function preloadImage(src: string) {
   return new Promise<void>((resolve) => {
@@ -43,10 +43,26 @@ function LoadingScreen() {
 }
 
 function App() {
+  const [variant, setVariant] = useState(getVariantFromLocation());
+  const [isReady, setIsReady] = useState(false);
   const params = new URLSearchParams(window.location.search);
   const submitted = params.get('submitted') === '1';
   const attendance = params.get('attendance');
-  const [isReady, setIsReady] = useState(false);
+  const invitation = getInvitationConfig(variant);
+
+  useEffect(() => {
+    const syncVariant = () => {
+      setVariant(getVariantFromLocation());
+    };
+
+    window.addEventListener('popstate', syncVariant);
+    window.addEventListener('hashchange', syncVariant);
+
+    return () => {
+      window.removeEventListener('popstate', syncVariant);
+      window.removeEventListener('hashchange', syncVariant);
+    };
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -55,18 +71,15 @@ function App() {
       ? [waitForFonts()]
       : [
           waitForFonts(),
-          preloadImage(photo0135),
-          preloadImage(photo0360),
-          preloadImage(galleryPhotos[0]?.image ?? ''),
+          preloadImage(invitation.hero.primaryImage),
+          preloadImage(invitation.hero.saveTheDateImage),
+          preloadImage(invitation.gallery.photos[0]?.image ?? ''),
         ];
 
-    const minimumDelay = new Promise((resolve) => window.setTimeout(resolve, 1800));
+    const minimumDelay = new Promise((resolve) => window.setTimeout(resolve, 2200));
     const fallbackTimeout = new Promise((resolve) => window.setTimeout(resolve, 4000));
 
-    Promise.race([
-      Promise.allSettled([...assetQueue, minimumDelay]),
-      fallbackTimeout,
-    ]).then(() => {
+    Promise.race([Promise.allSettled([...assetQueue, minimumDelay]), fallbackTimeout]).then(() => {
       if (!cancelled) {
         setIsReady(true);
       }
@@ -75,10 +88,14 @@ function App() {
     return () => {
       cancelled = true;
     };
-  }, [submitted]);
+  }, [invitation, submitted]);
 
   if (submitted && (attendance === 'attending' || attendance === 'absent')) {
-    return isReady ? <SuccessPage attendance={attendance} /> : <LoadingScreen />;
+    return (
+      <InvitationProvider invitation={invitation}>
+        <SuccessPage attendance={attendance} />
+      </InvitationProvider>
+    );
   }
 
   if (!isReady) {
@@ -86,18 +103,20 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(180deg,#f7efe8_0%,#f3e4da_45%,#eed9cf_100%)] text-ink">
-      <div className="relative isolate overflow-hidden">
-        <div className="absolute inset-x-0 top-0 -z-10 h-[36rem] bg-[linear-gradient(180deg,rgba(255,249,244,0.96),rgba(247,239,232,0.15))]" />
-        <div className="absolute left-1/2 top-24 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-[#dfb8b3]/70 blur-3xl" />
-        <div className="absolute bottom-0 right-[-8rem] -z-10 h-[28rem] w-[28rem] rounded-full bg-[#c98e99]/18 blur-3xl" />
-        <Hero />
-        <WeddingInfo />
-        <CalendarSection />
-        <Gallery />
-        <RSVPForm />
+    <InvitationProvider invitation={invitation}>
+      <div className="min-h-screen bg-[linear-gradient(180deg,#f7efe8_0%,#f3e4da_45%,#eed9cf_100%)] text-ink">
+        <div className="relative isolate overflow-hidden">
+          <div className="absolute inset-x-0 top-0 -z-10 h-[36rem] bg-[linear-gradient(180deg,rgba(255,249,244,0.96),rgba(247,239,232,0.15))]" />
+          <div className="absolute left-1/2 top-24 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-[#dfb8b3]/70 blur-3xl" />
+          <div className="absolute bottom-0 right-[-8rem] -z-10 h-[28rem] w-[28rem] rounded-full bg-[#c98e99]/18 blur-3xl" />
+          <Hero />
+          <WeddingInfo />
+          <CalendarSection />
+          <Gallery />
+          <RSVPForm />
+        </div>
       </div>
-    </div>
+    </InvitationProvider>
   );
 }
 
