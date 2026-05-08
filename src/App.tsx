@@ -83,19 +83,24 @@ function App() {
   useEffect(() => {
     let cancelled = false;
 
-    const assetQueue = submitted
-      ? [waitForFonts()]
+    const fontReady = waitForFonts();
+
+    const visualQueue = submitted
+      ? []
       : [
-          waitForFonts(),
           preloadImage(invitation.hero.primaryImage),
           preloadImage(invitation.hero.saveTheDateImage),
           preloadImage(invitation.gallery.photos[0]?.image ?? ''),
         ];
 
     const minimumDelay = new Promise((resolve) => window.setTimeout(resolve, 2200));
-    const fallbackTimeout = new Promise((resolve) => window.setTimeout(resolve, 4000));
+    const visualFallbackTimeout = new Promise((resolve) => window.setTimeout(resolve, 4000));
+    const visualsReady = Promise.race([
+      Promise.allSettled([...visualQueue, minimumDelay]),
+      visualFallbackTimeout,
+    ]);
 
-    Promise.race([Promise.allSettled([...assetQueue, minimumDelay]), fallbackTimeout]).then(() => {
+    Promise.all([fontReady, visualsReady]).then(() => {
       if (!cancelled) {
         setIsReady(true);
       }
