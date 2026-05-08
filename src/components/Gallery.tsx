@@ -41,13 +41,17 @@ export function Gallery() {
       image.decoding = 'async';
       image.src = photo.image;
     });
+  }, [emblaApi, galleryPhotos]);
 
-    const timer = window.setInterval(() => {
+  useEffect(() => {
+    if (!emblaApi || galleryPhotos.length <= 1) return;
+
+    const timer = window.setTimeout(() => {
       emblaApi.scrollNext();
     }, 8000);
 
-    return () => window.clearInterval(timer);
-  }, [emblaApi, galleryPhotos]);
+    return () => window.clearTimeout(timer);
+  }, [activeIndex, emblaApi, galleryPhotos.length]);
 
   const activeItem = galleryPhotos[activeIndex] ?? galleryPhotos[0];
 
