@@ -1,27 +1,55 @@
 import { useEffect, useState } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Fade from 'embla-carousel-fade';
 import { useInvitation } from '../context/InvitationContext';
 
 export function Gallery() {
   const invitation = useInvitation();
   const galleryPhotos = invitation.gallery.photos;
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeItem = galleryPhotos[activeIndex];
-
-  function goToPrevious() {
-    setActiveIndex((current) => (current === 0 ? galleryPhotos.length - 1 : current - 1));
-  }
-
-  function goToNext() {
-    setActiveIndex((current) => (current === galleryPhotos.length - 1 ? 0 : current + 1));
-  }
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: 'start',
+      duration: 40,
+    },
+    [Fade()],
+  );
 
   useEffect(() => {
+    if (!emblaApi) return;
+
+    const onSelect = () => {
+      setActiveIndex(emblaApi.selectedScrollSnap());
+    };
+
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+
+    return () => {
+      emblaApi.off('select', onSelect);
+      emblaApi.off('reInit', onSelect);
+    };
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    galleryPhotos.forEach((photo) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = photo.image;
+    });
+
     const timer = window.setInterval(() => {
-      goToNext();
-    }, 3000);
+      emblaApi.scrollNext();
+    }, 8000);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [emblaApi, galleryPhotos]);
+
+  const activeItem = galleryPhotos[activeIndex] ?? galleryPhotos[0];
 
   return (
     <section className="px-6 py-16 md:px-10">
@@ -37,19 +65,35 @@ export function Gallery() {
         <div>
           <article className="overflow-hidden rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 shadow-soft">
             <div className="relative">
-              <div className="transition-all duration-500">
-                <div className="relative overflow-hidden bg-[#f6ebe4] md:h-[28rem] lg:h-[32rem]">
-                  <img
-                    alt={activeItem.title}
-                    className="block h-auto w-full md:h-full md:object-contain"
-                    decoding="async"
-                    loading="lazy"
-                    src={activeItem.image}
-                  />
+              <div className="overflow-hidden" ref={emblaRef}>
+                <div className="flex">
+                  {galleryPhotos.map((photo) => (
+                    <div className="min-w-0 flex-[0_0_100%]" key={photo.image}>
+                      <div className="relative overflow-hidden bg-[#f6ebe4] md:h-[28rem] lg:h-[32rem]">
+                        <img
+                          alt={photo.title}
+                          className="block h-auto w-full md:h-full md:object-contain"
+                          decoding="async"
+                          loading="eager"
+                          src={photo.image}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-              <CarouselButton className="left-3 top-[calc(100%-1rem)] -translate-y-1/2 md:left-4 md:top-[calc(100%-1.5rem)]" direction="left" label="上一張" onClick={goToPrevious} />
-              <CarouselButton className="right-3 top-[calc(100%-1rem)] -translate-y-1/2 md:right-4 md:top-[calc(100%-1.5rem)]" direction="right" label="下一張" onClick={goToNext} />
+              <CarouselButton
+                className="left-3 top-[calc(100%-1rem)] -translate-y-1/2 md:left-4 md:top-[calc(100%-1.5rem)]"
+                direction="left"
+                label="上一張"
+                onClick={() => emblaApi?.scrollPrev()}
+              />
+              <CarouselButton
+                className="right-3 top-[calc(100%-1rem)] -translate-y-1/2 md:right-4 md:top-[calc(100%-1.5rem)]"
+                direction="right"
+                label="下一張"
+                onClick={() => emblaApi?.scrollNext()}
+              />
             </div>
             <div className="space-y-3 p-6 md:p-8">
               <p className="text-lg tracking-[0.28em] text-[#7a2234]/70">
