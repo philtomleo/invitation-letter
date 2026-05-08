@@ -7,6 +7,7 @@ import { SuccessPage } from './components/SuccessPage';
 import { WeddingInfo } from './components/WeddingInfo';
 import { InvitationProvider } from './context/InvitationContext';
 import { getInvitationConfig } from './data/invitations';
+import primaryFontUrl from './fonts/ChenYuluoyan-2.0-Thin.woff2?url';
 import { getVariantFromLocation } from './lib/routing';
 
 function preloadImage(src: string) {
@@ -20,7 +21,22 @@ function preloadImage(src: string) {
 
 function waitForFonts() {
   if ('fonts' in document) {
-    return document.fonts.ready.then(() => undefined).catch(() => undefined);
+    const primaryFace = new FontFace(
+      'Chen Yuluoyan',
+      `url(${primaryFontUrl}) format('woff2')`,
+      {
+        style: 'normal',
+        weight: '300',
+      },
+    );
+
+    return primaryFace
+      .load()
+      .then((loadedFace) => {
+        document.fonts.add(loadedFace);
+        return document.fonts.load('1rem "Chen Yuluoyan"').then(() => undefined);
+      })
+      .catch(() => undefined);
   }
 
   return Promise.resolve();
