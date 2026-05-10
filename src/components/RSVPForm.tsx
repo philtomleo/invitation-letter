@@ -109,13 +109,13 @@ export function RSVPForm() {
     <section id="rsvp" className="px-6 py-16 md:px-10">
       <div className="mx-auto grid max-w-6xl gap-8 md:rounded-[2.4rem] md:border md:border-white/60 md:bg-[#ecd7cc]/55 md:p-8 md:shadow-soft md:backdrop-blur md:grid-cols-[0.78fr_1.22fr]">
         <div className="space-y-4 text-center md:text-left">
-          <p className="text-lg tracking-[0.35em] text-[#7a2234]">{invitation.rsvp.eyebrow}</p>
+          <p className="text-xl tracking-[0.35em] text-[#7a2234]">{invitation.rsvp.eyebrow}</p>
           <h2 className="font-serif text-4xl text-ink md:text-5xl">{invitation.rsvp.title}</h2>
-          <p className="mx-auto max-w-md text-lg leading-8 text-ink/70 md:mx-0">{invitation.rsvp.intro}</p>
+          <p className="mx-auto max-w-md text-xl leading-8 text-ink/70 md:mx-0">{invitation.rsvp.intro}</p>
 
           <div className="rounded-[1.7rem] border border-white/65 bg-[#f7ebe3]/82 p-5 shadow-soft">
-            <p className="text-lg leading-7 text-[#6f2435]">{invitation.rsvp.reminderTitle}</p>
-            <ul className="mt-3 space-y-2 text-lg leading-7 text-[#7a3b47]">
+            <p className="text-xl leading-7 text-[#6f2435]">{invitation.rsvp.reminderTitle}</p>
+            <ul className="mt-3 space-y-2 text-xl leading-7 text-[#7a3b47]">
               {invitation.rsvp.reminderItems.map((item) => (
                 <li key={item}>{item.replace('{rsvpDeadlineShort}', invitation.event.rsvpDeadlineShort)}</li>
               ))}
@@ -235,7 +235,7 @@ export function RSVPForm() {
 
           <div className="mt-6 space-y-3">
             <button
-              className="inline-flex w-full items-center justify-center rounded-full bg-[#7a2234] px-6 py-4 text-lg font-medium tracking-[0.25em] text-white transition hover:bg-[#651a2a] disabled:cursor-not-allowed disabled:opacity-70"
+              className="inline-flex w-full items-center justify-center rounded-full bg-[#7a2234] px-6 py-4 text-xl font-medium tracking-[0.25em] text-white transition hover:bg-[#651a2a] disabled:cursor-not-allowed disabled:opacity-70"
               disabled={submitting}
               type="submit"
             >
@@ -243,10 +243,10 @@ export function RSVPForm() {
             </button>
 
             {visibleErrors.length > 0 ? (
-              <p className="text-lg leading-7 text-[#9a4352]">請先完成必填欄位並確認格式。</p>
+              <p className="text-xl leading-7 text-[#9a4352]">請先完成必填欄位並確認格式。</p>
             ) : null}
             {submitError ? (
-              <p className="rounded-2xl bg-[#ead0ca] px-4 py-3 text-lg leading-7 text-[#8b3948]">
+              <p className="rounded-2xl bg-[#ead0ca] px-4 py-3 text-xl leading-7 text-[#8b3948]">
                 {submitError}
               </p>
             ) : null}
@@ -304,7 +304,7 @@ function FieldShell({
           {required ? <span className="mr-1 text-[#9a4352]">*</span> : null}
           {label}
         </span>
-        {error ? <span className="text-lg text-[#9a4352]">{error}</span> : null}
+        {error ? <span className="text-xl text-[#9a4352]">{error}</span> : null}
       </div>
       {children}
     </label>
@@ -414,7 +414,7 @@ function RadioField({
     <FieldShell label={label} required={required} error={error}>
       <div className="flex flex-col gap-3 pt-1">
         {options.map((option) => (
-          <label key={option} className="flex items-center gap-3 text-lg text-ink">
+          <label key={option} className="flex items-center gap-3 text-xl text-ink">
             <input
               checked={value === option}
               className="h-5 w-5 accent-[#7a2234]"

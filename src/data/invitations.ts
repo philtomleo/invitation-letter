@@ -1,12 +1,10 @@
 import photo0088 from '../images/webp/260302_0088.webp';
 import photo0135 from '../images/webp/260302_0135.webp';
-import photo0144 from '../images/webp/260302_0144.webp';
 import photo0207 from '../images/webp/260302_0207.webp';
-import photo0196 from '../images/webp/260302_0196.webp';
 import photo0303 from '../images/webp/260302_0303.webp';
 import photo0358 from '../images/webp/260302_0358.webp';
 import photo0360 from '../images/webp/260302_0360.webp';
-import photo0471 from '../images/webp/260302_0471.webp';
+import photo0367 from '../images/webp/260302_0367.webp';
 
 export type InvitationVariantSlug = 'engagement' | 'wedding';
 
@@ -248,7 +246,7 @@ export const invitationConfigs: Record<InvitationVariantSlug, InvitationConfig> 
       dateCardLabel: '結婚日期',
       venueCardLabel: '宴客地點',
       primaryImage: photo0135,
-      saveTheDateImage: photo0360,
+      saveTheDateImage: photo0367,
       saveTheDateLabel: 'SAVE THE DATE',
       saveTheDateDateText: '2026 / 09 / 28 (一)',
       saveTheDateDayText: '',

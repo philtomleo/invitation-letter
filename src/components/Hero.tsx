@@ -8,7 +8,7 @@ export function Hero() {
       <div className="mx-auto max-w-6xl">
         <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6 text-center md:text-left">
-            <p className="inline-flex rounded-full border border-[#7a2234]/20 bg-[#fff8f2]/90 px-4 py-2 text-lg tracking-[0.35em] text-[#7a2234]">
+            <p className="inline-flex rounded-full border border-[#7a2234]/20 bg-[#fff8f2]/90 px-4 py-2 text-xl tracking-[0.35em] text-[#7a2234]">
               {invitation.hero.badge}
             </p>
             <div className="space-y-4">
@@ -49,13 +49,13 @@ export function Hero() {
             </div>
             <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center md:items-start md:justify-start">
               <a
-                className="inline-flex items-center justify-center rounded-full bg-[#7a2234] px-6 py-3 text-lg font-medium tracking-[0.2em] text-white transition hover:bg-[#651a2a]"
+                className="inline-flex items-center justify-center rounded-full bg-[#7a2234] px-6 py-3 text-xl font-medium tracking-[0.2em] text-white transition hover:bg-[#651a2a]"
                 href="#rsvp"
               >
                 立即回覆出席
               </a>
               <a
-                className="inline-flex items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f2]/90 px-6 py-3 text-lg font-medium tracking-[0.15em] text-[#7a2234] transition hover:border-[#7a2234]/35 hover:bg-white"
+                className="inline-flex items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f2]/90 px-6 py-3 text-xl font-medium tracking-[0.15em] text-[#7a2234] transition hover:border-[#7a2234]/35 hover:bg-white"
                 href={invitation.event.mapUrl}
                 rel="noreferrer"
                 target="_blank"
@@ -80,14 +80,14 @@ export function Hero() {
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,248,243,0.16),rgba(67,34,28,0.12))]" />
                 <div className="absolute inset-4 flex h-[calc(100%-2rem)] flex-col justify-between rounded-[1.35rem] border border-white/55 p-5 text-ink md:inset-6 md:h-[calc(100%-3rem)] md:p-6">
                   <div className="space-y-4 md:space-y-3">
-                    <p className="text-base tracking-[0.32em] text-[#7a2234]/80 md:text-lg md:tracking-[0.35em]">
+                    <p className="text-base tracking-[0.32em] text-[#7a2234]/80 md:text-xl md:tracking-[0.35em]">
                       {invitation.hero.saveTheDateLabel}
                     </p>
                     <p className="font-serif text-[2.15rem] leading-[1.1] md:text-5xl md:leading-none">
                       {invitation.hero.saveTheDateDateText}
                     </p>
                     {invitation.hero.saveTheDateDayText ? (
-                      <p className="text-base tracking-[0.22em] text-[#7a2234]/80 md:text-lg md:tracking-[0.25em]">
+                      <p className="text-base tracking-[0.22em] text-[#7a2234]/80 md:text-xl md:tracking-[0.25em]">
                         {invitation.hero.saveTheDateDayText}
                       </p>
                     ) : null}
@@ -118,7 +118,7 @@ function InfoCard({
 }) {
   return (
     <div className="rounded-[1.5rem] border border-white/70 bg-white/80 p-5 shadow-soft backdrop-blur">
-      <p className="mb-3 text-lg tracking-[0.26em] text-[#7a2234]/75">{label}</p>
+      <p className="mb-3 text-xl tracking-[0.26em] text-[#7a2234]/75">{label}</p>
       <p className="text-xl font-medium leading-8 text-ink">{value}</p>
       <p className="text-xl leading-7 text-ink/70">{detail}</p>
     </div>

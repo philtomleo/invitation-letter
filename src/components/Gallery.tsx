@@ -59,10 +59,10 @@ export function Gallery() {
     <section className="px-6 py-16 md:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 text-center md:text-left">
-          <p className="text-lg tracking-[0.35em] text-[#7a2234]">{invitation.gallery.eyebrow}</p>
+          <p className="text-xl tracking-[0.35em] text-[#7a2234]">{invitation.gallery.eyebrow}</p>
           <h2 className="mt-3 font-serif text-4xl text-ink md:text-5xl">{invitation.gallery.title}</h2>
           {invitation.gallery.intro ? (
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-ink/70 md:mx-0">{invitation.gallery.intro}</p>
+            <p className="mt-4 max-w-3xl text-xl leading-8 text-ink/70 md:mx-0">{invitation.gallery.intro}</p>
           ) : null}
         </div>
 
@@ -100,11 +100,11 @@ export function Gallery() {
               />
             </div>
             <div className="space-y-3 p-6 md:p-8">
-              <p className="text-lg tracking-[0.28em] text-[#7a2234]/70">
+              <p className="text-xl tracking-[0.28em] text-[#7a2234]/70">
                 {String(activeIndex + 1).padStart(2, '0')} / {String(galleryPhotos.length).padStart(2, '0')}
               </p>
               <h3 className="font-serif text-3xl text-ink md:text-4xl">{activeItem.title}</h3>
-              <p className="max-w-xl text-lg leading-8 text-ink/70">{activeItem.description}</p>
+              <p className="max-w-xl text-xl leading-8 text-ink/70">{activeItem.description}</p>
             </div>
           </article>
         </div>
