@@ -151,7 +151,7 @@ export const invitationConfigs: Record<InvitationVariantSlug, InvitationConfig> 
       cards: [
         { title: '婚宴時間', content: '午宴 12:00 準時開桌', subContent: '2026 / 09 / 19 星期六' },
         { title: '婚宴場地', content: '萬豪酒店 5 樓 萬豪二廳', subContent: '台北市中山區樂群二路199號' },
-        { title: 'RSVP 截止日', content: '2026 / 05 / 20', subContent: '敬請於截止日前完成回覆' },
+        { title: 'RSVP 截止日', content: '2026 / 05 / 24', subContent: '敬請於截止日前完成回覆' },
         { title: '交通資訊', content: '台北捷運文湖線 / 開車皆方便抵達', subContent: '實際路線可由地圖按鈕查看' },
       ],
     },
@@ -262,7 +262,7 @@ export const invitationConfigs: Record<InvitationVariantSlug, InvitationConfig> 
       cards: [
         { title: '婚宴時間', content: '晚宴 18:00', subContent: '2026 / 09 / 28 星期一' },
         { title: '婚宴場地', content: '長榮鳳凰酒店 長榮廳', subContent: '礁溪鄉玉石村健康路77號' },
-        { title: 'RSVP 截止日', content: '2026 / 05 / 20', subContent: '敬請於截止日前完成回覆' },
+        { title: 'RSVP 截止日', content: '2026 / 05 / 24', subContent: '敬請於截止日前完成回覆' },
         { title: '交通資訊', content: '當天可自駕前往礁溪', subContent: '實際路線可由地圖按鈕查看' },
       ],
     },
