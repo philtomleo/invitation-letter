@@ -106,12 +106,12 @@ export function RSVPForm() {
   }
 
   return (
-    <section id="rsvp" className="px-6 py-16 md:px-10">
-      <div className="mx-auto grid max-w-6xl gap-8 md:rounded-[2.4rem] md:border md:border-white/60 md:bg-[#ecd7cc]/55 md:p-8 md:shadow-soft md:backdrop-blur md:grid-cols-[0.78fr_1.22fr]">
-        <div className="space-y-4 text-center md:text-left">
+    <section id="rsvp" className="px-6 py-16 desktop:px-10">
+      <div className="mx-auto grid max-w-6xl gap-8 desktop:rounded-[2.4rem] desktop:border desktop:border-white/60 desktop:bg-[#ecd7cc]/55 desktop:p-8 desktop:shadow-soft desktop:backdrop-blur desktop:grid-cols-[0.78fr_1.22fr]">
+        <div className="space-y-4 text-center desktop:text-left">
           <p className="text-xl tracking-[0.35em] text-[#7a2234]">{invitation.rsvp.eyebrow}</p>
-          <h2 className="font-serif text-4xl text-ink md:text-5xl">{invitation.rsvp.title}</h2>
-          <p className="mx-auto max-w-md text-xl leading-8 text-ink/70 md:mx-0">{invitation.rsvp.intro}</p>
+          <h2 className="font-serif text-4xl text-ink desktop:text-5xl">{invitation.rsvp.title}</h2>
+          <p className="mx-auto max-w-md text-xl leading-8 text-ink/70 desktop:mx-0">{invitation.rsvp.intro}</p>
 
           <div className="rounded-[1.7rem] border border-white/65 bg-[#f7ebe3]/82 p-5 shadow-soft">
             <p className="text-xl leading-7 text-[#6f2435]">{invitation.rsvp.reminderTitle}</p>
@@ -124,7 +124,7 @@ export function RSVPForm() {
         </div>
 
         <form
-          className="md:rounded-[2rem] md:border md:border-white/80 md:bg-[#fffdf9]/94 md:p-8 md:shadow-soft md:backdrop-blur"
+          className="desktop:rounded-[2rem] desktop:border desktop:border-white/80 desktop:bg-[#fffdf9]/94 desktop:p-8 desktop:shadow-soft desktop:backdrop-blur"
           onSubmit={handleSubmit}
         >
           <div className="grid gap-4">

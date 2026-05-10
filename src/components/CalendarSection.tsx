@@ -18,9 +18,9 @@ export function CalendarSection() {
   }, [invitation.event.eventDate]);
 
   return (
-    <section className="px-6 py-16 md:px-10">
-      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[0.9fr_1.1fr]">
-        <div className="rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 p-6 shadow-soft backdrop-blur md:p-8">
+    <section className="px-6 py-16 desktop:px-10">
+      <div className="mx-auto grid max-w-6xl gap-8 desktop:grid-cols-[0.9fr_1.1fr]">
+        <div className="rounded-[2rem] border border-white/70 bg-[#fff8f3]/84 p-6 shadow-soft backdrop-blur desktop:p-8">
           <div className="mb-6 flex items-end justify-between">
             <div>
               <p className="text-xl tracking-[0.35em] text-[#7a2234]">{invitation.calendar.monthLabel}</p>
@@ -76,14 +76,14 @@ export function CalendarSection() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-white/70 bg-[linear-gradient(135deg,rgba(255,249,244,0.92),rgba(226,193,184,0.82))] p-6 shadow-soft backdrop-blur md:p-8">
+        <div className="rounded-[2rem] border border-white/70 bg-[linear-gradient(135deg,rgba(255,249,244,0.92),rgba(226,193,184,0.82))] p-6 shadow-soft backdrop-blur desktop:p-8">
           <p className="text-xl tracking-[0.35em] text-[#7a2234]">{invitation.calendar.countdownEyebrow}</p>
           <h2 className="mt-3 font-serif text-4xl text-ink">{invitation.calendar.countdownTitle}</h2>
           <p className="mt-4 max-w-lg text-xl leading-8 text-ink/70">
             {invitation.calendar.countdownDescription}
           </p>
 
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="mt-8 grid grid-cols-2 gap-4 desktop:grid-cols-4">
             <CountdownCard label="Days" value={countdown.days} />
             <CountdownCard label="Hours" value={countdown.hours} />
             <CountdownCard label="Minutes" value={countdown.minutes} />
@@ -102,7 +102,7 @@ export function CalendarSection() {
 function CountdownCard({ label, value }: { label: string; value: number }) {
   return (
     <div className="rounded-[1.6rem] border border-white/70 bg-[#fff8f3]/88 p-5 text-center shadow-soft">
-      <p className="font-serif text-4xl text-ink md:text-5xl">{String(value).padStart(2, '0')}</p>
+      <p className="font-serif text-4xl text-ink desktop:text-5xl">{String(value).padStart(2, '0')}</p>
       <p className="mt-2 text-xl tracking-[0.3em] text-[#7a2234]/70">{label}</p>
     </div>
   );

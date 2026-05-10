@@ -56,13 +56,13 @@ export function Gallery() {
   const activeItem = galleryPhotos[activeIndex] ?? galleryPhotos[0];
 
   return (
-    <section className="px-6 py-16 md:px-10">
+    <section className="px-6 py-16 desktop:px-10">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-8 text-center md:text-left">
+        <div className="mb-8 text-center desktop:text-left">
           <p className="text-xl tracking-[0.35em] text-[#7a2234]">{invitation.gallery.eyebrow}</p>
-          <h2 className="mt-3 font-serif text-4xl text-ink md:text-5xl">{invitation.gallery.title}</h2>
+          <h2 className="mt-3 font-serif text-4xl text-ink desktop:text-5xl">{invitation.gallery.title}</h2>
           {invitation.gallery.intro ? (
-            <p className="mt-4 max-w-3xl text-xl leading-8 text-ink/70 md:mx-0">{invitation.gallery.intro}</p>
+            <p className="mt-4 max-w-3xl text-xl leading-8 text-ink/70 desktop:mx-0">{invitation.gallery.intro}</p>
           ) : null}
         </div>
 
@@ -73,10 +73,10 @@ export function Gallery() {
                 <div className="flex">
                   {galleryPhotos.map((photo) => (
                     <div className="min-w-0 flex-[0_0_100%]" key={photo.image}>
-                      <div className="relative overflow-hidden bg-[#f6ebe4] md:h-[28rem] lg:h-[32rem]">
+                      <div className="relative overflow-hidden bg-[#f6ebe4] desktop:h-[28rem] wide:h-[32rem]">
                         <img
                           alt={photo.title}
-                          className="block h-auto w-full md:h-full md:object-contain"
+                          className="block h-auto w-full desktop:h-full desktop:object-contain"
                           decoding="async"
                           loading="eager"
                           src={photo.image}
@@ -87,23 +87,23 @@ export function Gallery() {
                 </div>
               </div>
               <CarouselButton
-                className="left-3 top-[calc(100%-1rem)] -translate-y-1/2 md:left-4 md:top-[calc(100%-1.5rem)]"
+                className="left-3 top-[calc(100%-1rem)] -translate-y-1/2 desktop:left-4 desktop:top-[calc(100%-1.5rem)]"
                 direction="left"
                 label="上一張"
                 onClick={() => emblaApi?.scrollPrev()}
               />
               <CarouselButton
-                className="right-3 top-[calc(100%-1rem)] -translate-y-1/2 md:right-4 md:top-[calc(100%-1.5rem)]"
+                className="right-3 top-[calc(100%-1rem)] -translate-y-1/2 desktop:right-4 desktop:top-[calc(100%-1.5rem)]"
                 direction="right"
                 label="下一張"
                 onClick={() => emblaApi?.scrollNext()}
               />
             </div>
-            <div className="space-y-3 p-6 md:p-8">
+            <div className="space-y-3 p-6 desktop:p-8">
               <p className="text-xl tracking-[0.28em] text-[#7a2234]/70">
                 {String(activeIndex + 1).padStart(2, '0')} / {String(galleryPhotos.length).padStart(2, '0')}
               </p>
-              <h3 className="font-serif text-3xl text-ink md:text-4xl">{activeItem.title}</h3>
+              <h3 className="font-serif text-3xl text-ink desktop:text-4xl">{activeItem.title}</h3>
               <p className="max-w-xl text-xl leading-8 text-ink/70">{activeItem.description}</p>
             </div>
           </article>
@@ -127,13 +127,13 @@ function CarouselButton({
   return (
     <button
       aria-label={label}
-      className={`absolute z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f3]/92 text-[#7a2234] shadow-soft backdrop-blur transition hover:border-[#7a2234]/35 hover:bg-white md:h-12 md:w-12 ${className}`}
+      className={`absolute z-10 inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#7a2234]/15 bg-[#fff8f3]/92 text-[#7a2234] shadow-soft backdrop-blur transition hover:border-[#7a2234]/35 hover:bg-white desktop:h-12 desktop:w-12 ${className}`}
       type="button"
       onClick={onClick}
     >
       <svg
         aria-hidden="true"
-        className="h-3.5 w-3.5 md:h-5 md:w-5"
+        className="h-3.5 w-3.5 desktop:h-5 desktop:w-5"
         fill="none"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"

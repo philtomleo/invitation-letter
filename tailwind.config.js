@@ -2,6 +2,11 @@
 export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
+    screens: {
+      sm: '640px',
+      desktop: '1200px',
+      wide: '1536px',
+    },
     extend: {
       colors: {
         ink: '#4a322f',
