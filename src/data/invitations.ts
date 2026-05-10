@@ -123,8 +123,8 @@ export const invitationConfigs: Record<InvitationVariantSlug, InvitationConfig> 
       venue: '萬豪酒店 5 樓 萬豪二廳',
       address: '台北市中山區樂群二路199號',
       mapUrl: sharedMapUrl,
-      rsvpDeadline: '2026 / 05 / 20',
-      rsvpDeadlineShort: '5/20',
+      rsvpDeadline: '2026 / 05 / 24',
+      rsvpDeadlineShort: '5/24',
     },
     hero: {
       badge: 'WEDDING INVITATION',
@@ -234,8 +234,8 @@ export const invitationConfigs: Record<InvitationVariantSlug, InvitationConfig> 
       venue: '長榮鳳凰酒店 長榮廳',
       address: '礁溪鄉玉石村健康路77號',
       mapUrl: weddingMapUrl,
-      rsvpDeadline: '2026 / 05 / 20',
-      rsvpDeadlineShort: '5/20',
+      rsvpDeadline: '2026 / 05 / 24',
+      rsvpDeadlineShort: '5/24',
     },
     hero: {
       badge: 'WEDDING INVITATION',
