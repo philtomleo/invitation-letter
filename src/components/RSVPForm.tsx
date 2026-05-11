@@ -117,7 +117,7 @@ export function RSVPForm() {
             <p className="text-xl leading-7 text-[#6f2435]">{invitation.rsvp.reminderTitle}</p>
             <ul className="mt-3 space-y-2 text-xl leading-7 text-[#7a3b47]">
               {invitation.rsvp.reminderItems.map((item) => (
-                <li key={item}>{item.replace('{rsvpDeadlineShort}', invitation.event.rsvpDeadlineShort)}</li>
+                <li key={item}>{renderReminderItem(item, invitation.event.rsvpDeadlineShort)}</li>
               ))}
             </ul>
           </div>
@@ -254,6 +254,20 @@ export function RSVPForm() {
         </form>
       </div>
     </section>
+  );
+}
+
+function renderReminderItem(template: string, deadline: string) {
+  const parts = template.split('{rsvpDeadlineShort}');
+
+  if (parts.length === 1) return template;
+
+  return (
+    <>
+      {parts[0]}
+      <span className="mx-1 text-2xl text-[#7a2234]">「{deadline}」</span>
+      {parts.slice(1).join('')}
+    </>
   );
 }
 
