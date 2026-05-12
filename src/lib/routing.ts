@@ -5,6 +5,11 @@ function isVariantSlug(value: string): value is InvitationVariantSlug {
 }
 
 export function getVariantFromLocation(locationLike = window.location): InvitationVariantSlug {
+  const queryValue = new URLSearchParams(locationLike.search).get('type');
+  if (queryValue && isVariantSlug(queryValue)) {
+    return queryValue;
+  }
+
   const hashValue = locationLike.hash.replace(/^#\/?/, '').split('/')[0];
   if (isVariantSlug(hashValue)) {
     return hashValue;
